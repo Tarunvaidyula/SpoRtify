@@ -2,11 +2,12 @@ import express from 'express';
 import path from 'path';
 import dotenvv from 'dotenv';
 import bcrypt from 'bcryptjs';
-import {User,Product} from './models/database.mjs';
+import {User,Product, Cart} from './models/database.mjs';
 import session from 'express-session';
 import passport, {ensureAuthenticated, forwardAuthenticated} from './config/passport.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
+
 
 dotenvv.config();
 
@@ -43,9 +44,6 @@ app.get('/login', (req, res) => {
 app.get('/signup', (req, res) => {
     res.render('signup');
 });
-app.get('/cart', (req,res)=>{
-    res.render('cart');
-});
 app.get('/profile', (req,res)=>{
     res.render('profile');
 });
@@ -65,19 +63,50 @@ app.post('/signup', forwardAuthenticated, async (req, res) => {
     console.log('USER CREATED, THANK YOU BOSS');
 });
 app.post('/login', forwardAuthenticated, passport.authenticate('local', {
-    successRedirect: '/homepage',
     failureRedirect: '/login',
     failureFlash: true
-}));
+}), async (req, res) => {
+    // Merge session cart with user's database cart
+    const userId = req.user._id;
+    const sessionCart = req.session.cart || [];
 
-app.get('/homepage',ensureAuthenticated, async (req, res) => {
-  try {
-    const cricketProducts = await Product.find({ category: 'cricket' }).limit(4);
-    const footballProducts = await Product.find({ category: 'football' }).limit(4);
-    res.render('homepage', { cricketProducts, footballProducts },  { user: req.user});
-  } catch (err) {
-    res.status(500).send('Error fetching products');
-  }});
+    if (sessionCart.length > 0) {
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            cart = new Cart({ userId, items: [] });
+        }
+
+        for (const sessionItem of sessionCart) {
+            const existingItem = cart.items.find(item => item.productId.equals(sessionItem.productId));
+            if (existingItem) {
+                existingItem.quantity += sessionItem.quantity;
+            } else {
+                cart.items.push({ productId: sessionItem.productId, quantity: sessionItem.quantity });
+            }
+        }
+
+        await cart.save();
+        req.session.cart = []; // Clear session cart after merging
+    }
+
+    res.redirect('/cart');
+});
+
+
+app.get('/homepage', ensureAuthenticated, async (req, res) => {
+    try {
+      const cricketProducts = await Product.find({ category: 'cricket' });
+      const footballProducts = await Product.find({ category: 'football' });
+  
+      res.render('homepage', {
+        user: req.user,
+        cricketProducts,
+        footballProducts,
+        isAuthenticated: true
+      });
+    } catch (err) {
+      res.status(500).send('Error fetching products');
+    }});
 app.get('/logout', ensureAuthenticated, (req, res) => {
     req.logout(err => {
       if (err) {
@@ -117,6 +146,59 @@ app.get('/football-products', async (req, res) => {
         console.error('Error fetching football products:', error);
         res.status(500).send('Internal Server Error');
     }
+});
+
+app.post('/cart/add', async (req, res) => {
+    const { productId, quantity } = req.body;
+
+    if (!req.session.cart) {
+        req.session.cart = [];
+    }
+
+    const existingItem = req.session.cart.find(item => item.productId === productId);
+    if (existingItem) {
+        existingItem.quantity += quantity;
+    } else {
+        req.session.cart.push({ productId, quantity });
+    }
+
+    res.status(200).json({ message: 'Product added to cart' });
+});
+
+// View cart (session-based for unauthenticated users)
+app.get('/cart', async (req, res) => {
+    let cart;
+    if (req.isAuthenticated()) {
+        // User is logged in, load cart from the database
+        const userId = req.user._id;
+        try {
+            cart = await Cart.findOne({ userId }).populate('items.productId');
+        } catch (error) {
+            console.error('Error fetching cart:', error);
+            return res.status(500).json({ message: 'Error fetching cart' });
+        }
+    } else {
+        // User is not logged in, use session cart
+        const sessionCart = req.session.cart || [];
+        const products = await Product.find({ '_id': { $in: sessionCart.map(item => item.productId) } });
+
+        cart = {
+            items: sessionCart.map(item => ({
+                productId: products.find(p => p._id.equals(item.productId)),
+                quantity: item.quantity
+            }))
+        };
+    }
+
+    // Calculate total items and total amount
+    let totalItems = 0;
+    let totalAmount = 0;
+    if (cart && cart.items.length > 0) {
+        totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0);
+        totalAmount = cart.items.reduce((sum, item) => sum + item.quantity * item.productId.price, 0);
+    }
+
+    res.render('cart', { cart, totalItems, totalAmount });
 });
 
 app.listen(port, () => {

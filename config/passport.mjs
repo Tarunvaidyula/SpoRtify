@@ -36,7 +36,6 @@ passport.deserializeUser(async (id, done) => {
 
 export default passport;
 
-// middleware/auth.js
     export const ensureAuthenticated= (req, res, next) => {
       if (req.isAuthenticated()) {
         return next();
