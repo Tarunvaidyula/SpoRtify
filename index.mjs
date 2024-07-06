@@ -29,14 +29,16 @@ app.use((req, res, next) => {
   });
 
 app.set('view engine', 'ejs');
-app.get('/', async(req,res)=>{
-  try {
-  const cricketProducts = await Product.find({ category: 'cricket' });
-  const footballProducts = await Product.find({ category: 'football' });
-  res.render('homepage', { cricketProducts, footballProducts });
-} catch (err) {
-  res.status(500).send('Error fetching products');
-}});
+app.get('/', async (req, res) => {
+    try {
+        const cricketProducts = await Product.find({ category: 'cricket' }).lean();
+        const footballProducts = await Product.find({ category: 'football' }).lean();
+        res.render('homepage', { cricketProducts, footballProducts });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
+});
 
 app.get('/login', (req, res) => {
     res.render('login');
@@ -63,6 +65,35 @@ app.post('/signup', forwardAuthenticated, async (req, res) => {
     console.log('USER CREATED, THANK YOU BOSS');
 });
 app.post('/login', forwardAuthenticated, passport.authenticate('local', {
+    failureRedirect: '/login',
+    failureFlash: true
+}), async (req, res) => {
+    // Merge session cart with user's database cart
+    const userId = req.user._id;
+    const sessionCart = req.session.cart || [];
+
+    if (sessionCart.length > 0) {
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            cart = new Cart({ userId, items: [] });
+        }
+
+        for (const sessionItem of sessionCart) {
+            const existingItem = cart.items.find(item => item.productId.equals(sessionItem.productId));
+            if (existingItem) {
+                existingItem.quantity += sessionItem.quantity;
+            } else {
+                cart.items.push({ productId: sessionItem.productId, quantity: sessionItem.quantity });
+            }
+        }
+
+        await cart.save();
+        req.session.cart = []; // Clear session cart after merging
+    }
+
+    res.redirect('/cart');
+});
+app.post('/login', passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
 }), async (req, res) => {
@@ -162,6 +193,27 @@ app.post('/cart/add', async (req, res) => {
         req.session.cart.push({ productId, quantity });
     }
 
+    if (req.isAuthenticated()) {
+        // User is logged in, merge with database cart immediately
+        const userId = req.user._id;
+        let cart = await Cart.findOne({ userId });
+        if (!cart) {
+            cart = new Cart({ userId, items: [] });
+        }
+
+        for (const sessionItem of req.session.cart) {
+            const existingDbItem = cart.items.find(item => item.productId.equals(sessionItem.productId));
+            if (existingDbItem) {
+                existingDbItem.quantity += sessionItem.quantity;
+            } else {
+                cart.items.push({ productId: sessionItem.productId, quantity: sessionItem.quantity });
+            }
+        }
+
+        await cart.save();
+        req.session.cart = []; // Clear session cart after merging
+    }
+
     res.status(200).json({ message: 'Product added to cart' });
 });
 
@@ -199,6 +251,31 @@ app.get('/cart', async (req, res) => {
     }
 
     res.render('cart', { cart, totalItems, totalAmount });
+});
+
+// Remove product from cart
+app.post('/cart/remove', async (req, res) => {
+    const { productId } = req.body;
+
+    if (req.isAuthenticated()) {
+        // User is logged in, remove from database cart
+        const userId = req.user._id;
+        try {
+            let cart = await Cart.findOne({ userId });
+            if (cart) {
+                cart.items = cart.items.filter(item => !item.productId.equals(productId));
+                await cart.save();
+            }
+            res.status(200).json({ message: 'Product removed from cart' });
+        } catch (error) {
+            console.error('Error removing product from cart:', error);
+            res.status(500).json({ message: 'Error removing product from cart' });
+        }
+    } else {
+        // User is not logged in, remove from session cart
+        req.session.cart = req.session.cart.filter(item => item.productId !== productId);
+        res.status(200).json({ message: 'Product removed from cart' });
+    }
 });
 
 app.listen(port, () => {
