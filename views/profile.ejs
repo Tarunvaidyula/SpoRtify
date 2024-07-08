@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html leng="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Profile Page</title>
+    <link rel="stylesheet" href="css/profile.css">
+    <script src="https://kit.fontawesome.com/cacf32ff12.js" crossorigin="anonymous"></script>
+</head>
+<body>
+  <nav class="navigation">
+      <!--logo-------->
+      <a href="homepage" class="logonav"> <span>Insta</span>Get</a>
+      </div>
+    </nav>
+    <div class="container">
+        <div class="leftbox">
+            <nav>
+                <a onclick="tabs(0)" class="tab active">
+                    <i class="fas fa-user"></i>
+                </a>
+                <a onclick="tabs(1)" class="tab">
+                    <i class="far fa-credit-card"></i>
+            </nav>
+        </div>
+        <form action="/profile" method="POST">
+        <div class="rightbox">
+            <div class="profile tabShow">
+                <h1>Personal Information</h1>
+                <h2>Name</h2>
+                <input type="text" class="input" name="name" id="name">
+                <h2>Gender</h2>
+                <input type="text" class="input" name="gender" id="gender">
+                <h2>Birthday</h2>
+                <input type="number" class="input" name="bday" id="bday">
+                <h2>Email</h2>
+                <input type="email" class="input" name="email" id="email">
+                <h2>Password</h2>
+                <input type="password" class="input" name="password" id="password" >
+                <h2>phone.no:</h2>
+                <input type="number" class="input" name="phnum" id="phnum">
+                <button class="btn">
+                    update
+                </button>
+            </div>
+            <div class="Payment tabShow">
+                <h1>Shipment Information</h1>
+                <h2>Billing Adress</h2>
+                <input type="text" class="input" name="billing" id="billing">
+                <h2>Pincode</h2>
+                <input type="number" class="input" name="pincode" id="pincode">
+                <h2>Last Order Shipped On</h2>
+                <input type="text" class="input" name="lastorder" id="lastorder">
+                <h2>Reedem Card</h2>
+                <input type="number" class="input" name="redeem" id="redeem" >
+                <button class="btn">
+                    update
+                </button>
+            </div>
+        </div>
+    </div>
+    </form>
+<br><br><br>
+    <footer>
+        <div class="footer-container">
+          <!--logo-container------>
+          <div class="footer-logo">
+            <div class="footer-social">
+              <a href="https://www.facebook.com/"
+                ><i class="fab fa-facebook-f"></i
+              ></a>
+              <a href="https://twitter.com/?lang=en-in"
+                ><i class="fab fa-twitter"></i
+              ></a>
+              <a href="https://www.instagram.com/"
+                ><i class="fab fa-instagram"></i
+              ></a>
+              <a href="https://www.youtube.com/"
+                ><i class="fab fa-youtube"></i
+              ></a>
+            </div>
+          </div>
+          <!--links------------------------->
+          <div class="footer-links">
+            <strong>Product</strong>
+            <ul>
+            </ul>
+          </div>
+          <!--links------------------------->
+          <div class="footer-links">
+            <strong>Category</strong>
+          </div>
+          <!--links-------------------------->
+          <div class="footer-links">
+            <strong>Contact</strong>
+            <ul>
+              <li><a href="#">Phone : +123456789</a></li>
+              <li><a href="#">Email : @gmail.com</a></li>
+              <li><a href="#">Cities we serve</a></li>
+            </ul>
+            <br />
+            <p style="color: aliceblue">Copyright ©2023 | All Rights Reserved</p>
+          </div>
+        </div>
+      </footer>
+      <script src="js/profile.js"></script>
+</body>
+</html>

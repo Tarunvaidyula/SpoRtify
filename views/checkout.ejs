@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>Details for Delivery</title>
+    <link href="css/checkout.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div class="contact-in">
+    <div class="contact-map">
+        <img src="https://images3.alphacoders.com/135/1352896.png" alt="checkout" height="500" width="1200" />
+    </div>
+    <div class="contact-form">
+        <h1 style="align-items: center">Details For Delivery</h1>
+        <div id="error_message"></div>
+        <form class="address_form" action="/checkout" method="POST" onsubmit="return validate_form();">
+            <input type="text" placeholder="Name" class="contact-form-txt" name="name" id="name" required />
+            <input type="text" placeholder="Address" class="contact-form-txt" name="address" id="address" required />
+            <input type="email" placeholder="Email-ID" class="contact-form-txt" name="email" id="email" required />
+            <input type="text" placeholder="Locality/Apartment" class="contact-form-txt" name="locality" required />
+            <input type="text" placeholder="Pincode" class="contact-form-txt" name="pincode" id="pincode" required />
+            <input type="text" placeholder="Contact No." class="contact-form-txt" name="phone" id="phone" required />
+            <button type="submit" class="contact-form-btn">Submit</button>
+        </form>
+    </div>
+</div>
+<script src="js/checkout.js"></script>
+</body>
+</html>

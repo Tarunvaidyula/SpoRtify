@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="device-width, initial-scale=1.0">
+    <title>Home - F1 Store</title>
+    <link rel="stylesheet" type="text/css" href="css/homepage.css">
+</head>
+<body>
+    <header>
+        <div class="header-content">
+           <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
+        </div><br>
+        <div class="search-bar">
+            <input type="text" placeholder="search">
+            <button type="submit"><img src="images/search.jpg" alt="search"></button>
+        </div><br>
+        <% if (isAuthenticated) {%>
+            <div class="welcome-message">
+            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
+            </div>
+            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+        <% } else { %>
+    <a href="login" style="color: white"><button class="profile-button"><img src="images/profile-icon.jpg" alt="Profile Icon"><br>Login</a></button>
+        <%}%><a href="cart" style="color: white"><button class="cart-button"><img src="images/cart-icon.png" alt="Cart Icon"><br>Cart</a></button>
+</div>
+    </header>
+    <div class="Navbar">
+    <nav>
+        <ul class="navbar">
+            <b>
+            <li><a href="">Shop By Products</a>
+                <ul class="dropdown" style="display: none;">
+                    <li><a href="football-products">football</a></li>
+                    <li><a href="cricket-products">cricket</a></li>
+                    <li><a href="">Boxing</a></li>
+                    <li><a href="">Basketball</a></li>
+                </ul>
+            </li>
+            <li><a href="">Shop By Sport</a>
+                <ul class="dropdown2" style="display: none;">
+                    <li><a href="">Alexander Albon</a></li>
+                    <li><a href="">Carlos Sainz</a></li>
+                    <li><a href="">Charles Leclerc</a></li>
+                    <li><a href="">Daniel Ricciardo</a></li>
+                    <li><a href="">Esteban Ocan</a></li>
+                    <li><a href="">Fernando Alonso</a></li>
+                </ul>
+            </li>
+            <li><a href="">Men</a></li>
+            <li><a href="">Women</a></li> 
+            <li><a href="">Kids</a></li>
+            <li><a href="">Accessories</a>
+                <ul class="dropdown4" style="display: none;">
+                    <li><a href="">Jerseys</a></li>
+                    <li><a href="">Tracks</a></li>
+                    <li><a href="">Backpacks & Bags</a></li>
+                    <li><a href="">Headwear</a></li>
+                    <li><a href="">Shoes</a></li>
+                    <li><a href="">Gloves & Guards</a></li>
+                </ul>
+            <li><a href="">Headwear</a>
+            <ul class="dropdown3" style="display: none;">
+                <li><a href="">Men</a></li>
+                <li><a href="">Women</a></li>
+                <li><a href="">Kids</a></li>
+        </ul>
+    </b>
+        </li>
+    </nav>
+    </div><br><br>
+    <div class="explore">
+        <h2>New Arrivals in 2024! , <a href="" style="color: black;"> Shop Now >></a></h2>
+    </div><br><br>   
+    <main><center>
+        <h2 class="shop-team">Shop By Sport</h2>
+        <div class="product-container1">
+            <ul class="product-list">
+                <li class="product-item">
+                    <a href=""><img src="images/alpine.png" alt="Alpine" width="100"></a></li>
+                <li class="product-item">
+                    <a href=""><img src="images/Mercedes.png" alt="Mercedes" width="100"></a></li>
+                <li class="product-item">
+                    <a href=""><img src="images/Haas.png" alt="Haas" width="100"></a></li>
+                </li>
+                <li class="product-item">
+                    <a href=""><img src="images/redbull.jpg" alt="Redbull" width="100"></a></li>
+                </li>
+                <li class="product-item">
+                    <a href=""><img src="images/aston.png" alt="Aston Martin" width="100"></a></li>
+                <li class="product-item">
+                    <a href=""><img src="images/ferrari.png" alt="ferrari" width="50" height="50"></a>
+                </li>
+            </ul>
+        </div>
+    </center>
+<div class="container">
+        <div id="productDeal">
+            <a href=""><img class="product-image" src="images/best2.jpeg" alt="best2"></a>
+            <a href=""><img class="product-image" src="images/best3.jpeg" alt="best3"></a>
+            <a href=""><img class="product-image" src="images/best1.jpeg" alt="best1"></a>
+        </div>
+        <div>
+            <span class="nav-arrow" onclick="prevImage()">&#10094;</span>
+            <span class="nav-arrow" onclick="nextImage()">&#10095;</span>
+        </div>
+    </div><br><br>
+<h2 style="color: white;"> 2024 Teamwear Top Sellers! </h2><br><br>
+<section>
+    <h2>Cricket Products</h2><br>
+    <div class="product-container">
+        <% if (cricketProducts && cricketProducts.length > 0) { %>
+            <% cricketProducts.forEach(product => { %>
+                <div class="product-box">
+                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <h3><%= product.name %></h3>
+                    <p><%= product.description %></p>
+                    <p>$<%= product.price %></p>
+                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                </div>
+            <% }); %>
+        <% } else { %>
+            <p>No cricket products available.</p>
+        <% } %>
+    </div>
+</section>
+
+<section>
+    <h2>Football Products</h2><br>
+    <div class="product-container">
+        <div class="product-container">
+            <% if (footballProducts && footballProducts.length > 0) { %>
+                <% footballProducts.forEach(product => { %>
+                    <div class="product-box">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                        <h3><%= product.name %></h3>
+                        <p><%= product.description %></p>
+                        <p>$<%= product.price %></p>
+                        <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No football products available.</p>
+            <% } %>
+        </div>
+    </div>
+</section>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="column">
+                <h3 style="text-align: left;">About Us</h3>
+                <p style="color: white;">Welcome to the official Formula One online store,<br>the one-stop shop for the high-octane sport of F1, <br>specialising in distributing the latest and greatest F1 and Grand Prix merchandise,<br> while stocking an unrivalled range of authentic and licenced teamwear, caps, fan apparel and accessories.</p>
+            </div>
+            <div class="column">
+                <h3>Account</h3>
+                <ul> <% if (isAuthenticated) {%>
+                    <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+                <% } else { %>
+            <li><a href="login">Login</a></li>
+            <li><a href="signup">SignUp</a></li>
+                <%}%>
+                    <li><a href="profile">Profile</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Contact Us</h3>
+                <p style="color: white;">Email: @gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <ul class="social-media">
+                <li><b>Follow Us: </b></li>
+                <li><a href="https://www.facebook.com"><img src="images/facebook.png" alt="facebook"></a></li>
+                <li><a href="https://www.instagram.com"><img src="images/insta.jpeg" alt="instagram"></a></li>
+                <li><a href="https://twitter.com"><img src="images/twitter.jpg" alt="twitter"></a></li>
+            </ul>
+            <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="js/homepage.js"></script>
+    <script>
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', async () => {
+                const productId = button.getAttribute('data-id');
+                const quantity = 1;
+                try {
+                    const response = await fetch('/cart/add', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({ productId, quantity })
+                    });
+                    const result = await response.json();
+                    alert(result.message);
+                } catch (error) {
+                    console.error('Error adding product to cart:', error);
+                    alert('Error adding product to cart');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
