@@ -7,9 +7,9 @@ mongoose.connect(mongoURI)
   .then(() => console.log('MongoDB Connected'))
   .catch(err => console.log(err));
 
-  const UserSchema = new mongoose.Schema({
-    name: String,
-    email: { type: String, required: true, unique: true },
+const UserSchema = new mongoose.Schema({
+    name: { type: String, trim: true },
+    email: { type: String, required: true, unique: true, trim: true, index: true },
     password: { type: String, required: true },
     phnum: Number,
     bday: Date,
@@ -17,24 +17,48 @@ mongoose.connect(mongoURI)
     billing: String,
     lastorder: Date,
     redeem: Number,
-  });
-  const productSchema= new mongoose.Schema({
-    name: {type: String, unique: true},
-    price: Number,
+    cardNumber: Number,
+}, { timestamps: true });
+
+const ProductSchema = new mongoose.Schema({
+    name: { type: String, unique: true, index: true },
+    price: { type: Number, required: true },
     category: String,
     description: String,
-    stock: Number,
+    stock: { type: Number, default: 0 },
     image: String,
-  });
-  const cartItemSchema = new mongoose.Schema({
+}, { timestamps: true });
+
+const CartItemSchema = new mongoose.Schema({
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
     quantity: { type: Number, required: true, default: 1 }
-  });
-  const cartSchema = new mongoose.Schema({
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
-    items: [cartItemSchema]
-  });  
+});
 
-export const Cart = mongoose.model('Cart', cartSchema);
-export const Product = mongoose.model('Product', productSchema);
+const CartSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    items: [CartItemSchema]
+}, { timestamps: true });
+
+const OrderItemSchema = new mongoose.Schema({
+    productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },
+    quantity: { type: Number, required: true },
+    price: { type: Number, required: true }
+});
+
+const OrderSchema = new mongoose.Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
+    items: [OrderItemSchema],
+    name: String,
+    address: String,
+    email: String,
+    locality: String,
+    pincode: String,
+    phone: { type: String, validate: /^[0-9]{10}$/, required: true },
+    totalAmount: { type: Number, default: 0 },
+    createdAt: { type: Date, default: Date.now }
+});
+
+export const Order = mongoose.model('Order', OrderSchema);
+export const Cart = mongoose.model('Cart', CartSchema);
+export const Product = mongoose.model('Product', ProductSchema);
 export const User = mongoose.model('User', UserSchema);
