@@ -8,6 +8,7 @@ import { User, Product, Cart, Order } from './models/database.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
 import { forwardAuthenticated, ensureAuthenticated } from './config/passport.mjs';
+import cartRoutes from './cartRoutes.mjs';
 
 dotenv.config();
 
@@ -22,10 +23,12 @@ app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie: { maxAge: 1000 * 60 * 60 * 12 }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(cartRoutes);
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -91,27 +94,7 @@ app.post('/signup', forwardAuthenticated, async (req, res) => {
         const salt = await bcrypt.genSalt(10);
         newUser.password = await bcrypt.hash(password, salt);
         await newUser.save();
-        const sessionCart = req.session.cart || [];
-        if (sessionCart.length > 0) {
-            const userId = newUser._id;
-            let cart = await Cart.findOne({ userId });
-
-            if (!cart) {
-                cart = new Cart({ userId, items: [] });
-            }
-
-            for (const sessionItem of sessionCart) {
-                const existingItem = cart.items.find(item => item.productId.equals(sessionItem.productId));
-                if (existingItem) {
-                    existingItem.quantity += sessionItem.quantity;
-                } else {
-                    cart.items.push({ productId: sessionItem.productId, quantity: sessionItem.quantity });
-                }
-            }
-
-            await cart.save();
-            req.session.cart = [];
-        }
+        console.log('User created boss');
         req.login(newUser, function (err) {
             if (err) {
                 return res.status(500).send('Error during login after signup');
@@ -160,96 +143,29 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
     });
   });
 
-app.get('/cart', async (req, res) => {
+
+app.get('/checkout', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
     let cart;
-    if (req.isAuthenticated()) {
-        const userId = req.user._id;
-        try {
-            cart = await Cart.findOne({ userId }).populate('items.productId');
-        } catch (error) {
-            console.error('Error fetching cart:', error);
-            return res.status(500).send('Error fetching cart');
-        }
-    } else {
-        const sessionCart = req.session.cart || [];
-        const products = await Product.find({ '_id': { $in: sessionCart.map(item => item.productId) } });
 
-        cart = {
-            items: sessionCart.map(item => ({
-                productId: products.find(p => p._id.equals(item.productId)),
-                quantity: item.quantity
-            }))
-        };
-    }
-    let totalItems = 0;
-    let totalAmount = 0;
-    if (cart && cart.items.length > 0) {
-        totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-        totalAmount = cart.items.reduce((sum, item) => sum + item.quantity * item.productId.price, 0);
+    try {
+        cart = await Cart.findOne({ userId }).populate('items.productId');
+    } catch (error) {
+        console.error('Error fetching cart:', error);
+        return res.status(500).send('Error fetching cart');
     }
 
-    res.render('cart', { cart, totalItems, totalAmount });
-});
-
-app.post('/cart/add', async (req, res) => {
-    const { productId, quantity } = req.body;
-
-    if (!req.session.cart) {
-        req.session.cart = [];
+    if (!cart || cart.items.length === 0) {
+        return res.redirect('/cart');
     }
 
-    const existingItem = req.session.cart.find(item => item.productId === productId);
-    if (existingItem) {
-        existingItem.quantity += quantity;
-    } else {
-        req.session.cart.push({ productId, quantity });
-    }
-
-    if (req.isAuthenticated()) {
-        const userId = req.user._id;
-        let cart = await Cart.findOne({ userId });
-        if (!cart) {
-            cart = new Cart({ userId, items: [] });
-        }
-
-        for (const sessionItem of req.session.cart) {
-            const existingDbItem = cart.items.find(item => item.productId.equals(sessionItem.productId));
-            if (existingDbItem) {
-                existingDbItem.quantity += sessionItem.quantity;
-            } else {
-                cart.items.push({ productId: sessionItem.productId, quantity: sessionItem.quantity });
-            }
-        }
-        await cart.save();
-        req.session.cart = [];
-    }
-
-    res.status(200).json({ message: 'Product added to cart' });
-});
-
-app.post('/cart/remove', async (req, res) => {
-    const { productId } = req.body;
-
-    if (req.isAuthenticated()) {
-        const userId = req.user._id;
-        try {
-            let cart = await Cart.findOne({ userId });
-            if (cart) {
-                cart.items = cart.items.filter(item => !item.productId.equals(productId));
-                await cart.save();
-            }
-            res.status(200).json({ message: 'Product removed from cart' });
-        } catch (error) {
-            console.error('Error removing product from cart:', error);
-            res.status(500).json({ message: 'Error removing product from cart' });
-        }
-    } else {
-        req.session.cart = req.session.cart.filter(item => item.productId !== productId);
-        res.status(200).json({ message: 'Product removed from cart' });
-    }
+    res.render('checkout');
 });
 
 app.post('/checkout', ensureAuthenticated, async (req, res) => {
+    if ( req.session.cart.length === 0){
+        return res.redirect('/cart');
+    }
     try {
         const userId = req.user._id;
         const { name, address, email, locality, pincode, phone } = req.body;
@@ -339,4 +255,3 @@ async function seedDatabase() {
     }
 }
 seedDatabase();
-

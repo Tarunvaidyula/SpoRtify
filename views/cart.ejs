@@ -1,11 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart</title>
     <link rel="stylesheet" type="text/css" href="css/cart.css" />
-    <link rel="stylesheet" href="css/homepage.css" />
+    <link rel="stylesheet" href="css/headfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <script src="https://kit.fontawesome.com/9088cc6401.js" crossorigin="anonymous"></script>
+    <style>
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+        }
+        .quantity-controls button {
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #f0f0f0;
+            border: none;
+            margin-right: 5px;
+            font-size: 16px;
+            line-height: 1;
+        }
+        .quantity-controls input {
+            width: 40px;
+            text-align: center;
+            font-size: 16px;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 <header>
@@ -13,61 +36,65 @@
         <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
     </div>
 </header>
-<div class="navigation">
-    <ul class="menu">
-        <li>
-            <a href="homepage"> Home </a>
-        </li>
+<div class="container">
+    <ul class="navigation">
+        <li><a href="homepage">Home</a></li>
         <% if (isAuthenticated) { %>
             <li>
-                <a href="logout" style="color: white"><button class="profile-button"><br>Logout</button></a>
+                <a href="logout">Logout</a>
             </li>
         <% } else { %>
-            <li>
-                <a href="signup"> Sign up </a>
-            </li>
-            <li>
-                <a href="login"> Login </a>
-            </li>
+            <li><a href="signup">Sign up</a></li>
+            <li><a href="login">Login</a></li>
         <% } %>
     </ul>
-</div>
-<div class="container">
-    <h1>Shopping Cart</h1><br>
-    <div class="cart-container">
-        <% if (cart && cart.items.length > 0) { %>
-            <% cart.items.forEach(item => { %>
-                <div class="cart-item">
-                    <img src="<%= item.productId.image %>" alt="<%= item.productId.name %>">
-                    <div>
-                        <h3><%= item.productId.name %></h3>
-                        <p>Quantity: <%= item.quantity %></p>
-                        <p>Price: $<%= item.productId.price %> each</p>
-                        <button class="remove-from-cart" data-id="<%= item.productId._id %>">Remove from Cart</button>
+    <div class="cart">
+        <div class="products">
+            <% if (cart && cart.items.length > 0) { %>
+                <% cart.items.forEach(item => { %>
+                    <div class="product">
+                        <img src="<%= item.productId.image %>" alt="<%= item.productId.name %>">
+                        <div class="product-info">
+                            <h3 class="product-name"><%= item.productId.name %></h3>
+                            <div class="quantity-controls">
+                                <button class="decrement-quantity" data-id="<%= item.productId._id %>">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="product-quantity" value="<%= item.quantity %>" min="1" max="10" disabled>
+                                <button class="increment-quantity" data-id="<%= item.productId._id %>">
+                                    <i class="fas fa-plus"></i>
+                                </button>
+                            </div>
+                            <h4 class="product-price">Price: $<%= item.productId.price %> each</h4>
+                            <button class="product-remove" data-id="<%= item.productId._id %>">
+                                <i class="fas fa-trash"></i> Remove
+                            </button>
+                        </div>
                     </div>
-                </div>
-            <% }); %>
-            <div class="cart-summary">
-                <p>Total Items: <%= totalItems %></p>
-                <p>Total Amount: $<%= totalAmount %></p>
-                <a href="/checkout">Proceed to Checkout</a>
-            </div>
-        <% } else { %>
-            <p>Your cart is empty.</p>
-        <% } %>
+                <% }); %>
+            <% } else { %>
+                <p>Your cart is empty.</p>
+            <% } %>
+        </div>
+        <div class="cart-total">
+            <h2>Cart Summary</h2>
+            <p>Total Items: <%= totalItems %></p>
+            <p>Total Amount: $<%= totalAmount %></p>
+            <a href="/checkout">Proceed to Checkout</a>
+        </div>
     </div>
 </div>
 <footer class="footer">
     <div class="footer-content">
         <div class="column">
-            <h3 style="text-align: left;">About Us</h3>
-            <p style="color: white;">Welcome to the official Formula One online store,<br>the one-stop shop for the high-octane sport of F1, <br>specialising in distributing the latest and greatest F1 and Grand Prix merchandise,<br> while stocking an unrivalled range of authentic and licenced teamwear, caps, fan apparel and accessories.</p>
+            <h3>About Us</h3>
+            <p>Welcome to the official Formula One online store,<br>the one-stop shop for the high-octane sport of F1, <br>specialising in distributing the latest and greatest F1 and Grand Prix merchandise,<br> while stocking an unrivalled range of authentic and licenced teamwear, caps, fan apparel and accessories.</p>
         </div>
         <div class="column">
             <h3>Account</h3>
             <ul>
                 <% if (isAuthenticated) { %>
-                    <li><a href="logout" style="color: white"><button class="profile-button"><br>Logout</button></a></li>
+                    <li><a href="logout">Logout</a></li>
                 <% } else { %>
                     <li><a href="login">Login</a></li>
                     <li><a href="signup">Sign Up</a></li>
@@ -77,42 +104,19 @@
         </div>
         <div class="column">
             <h3>Contact Us</h3>
-            <p style="color: white;">Email: Instagetservice@gmail.com</p>
+            <p>Email: Instagetservice@gmail.com</p>
         </div>
     </div>
     <div class="footer-bottom">
         <ul class="social-media">
-            <li><b>Follow Us: </b></li>
+            <li><b>Follow Us:</b></li>
             <li><a href=""><img src="images/facebook.png" alt="facebook"></a></li>
             <li><a href=""><img src="images/insta.jpeg" alt="instagram"></a></li>
             <li><a href=""><img src="images/twitter.jpg" alt="twitter"></a></li>
         </ul>
-        <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
+        <p>&copy; 2024 F1 Store. All rights reserved.</p>
     </div>
 </footer>
-<script>
-    document.querySelectorAll('.remove-from-cart').forEach(button => {
-        button.addEventListener('click', async () => {
-            const productId = button.getAttribute('data-id');
-            try {
-                const response = await fetch('/cart/remove', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({ productId })
-                });
-                const result = await response.json();
-                alert(result.message); // Display success or error message
-                if (response.status === 200) {
-                    location.reload(); // Reload the page to update the cart
-                }
-            } catch (error) {
-                console.error('Error removing product from cart:', error);
-                alert('Error removing product from cart');
-            }
-        });
-    });
-</script>
+<script src="js/cart.js"></script>
 </body>
 </html>

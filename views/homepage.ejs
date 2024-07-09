@@ -5,6 +5,7 @@
     <meta name="viewport" content="device-width, initial-scale=1.0">
     <title>Home - F1 Store</title>
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
+    <link rel="stylesheet" href="css/headfo.css">
 </head>
 <body>
     <header>
@@ -105,37 +106,35 @@
             <span class="nav-arrow" onclick="nextImage()">&#10095;</span>
         </div>
     </div><br><br>
-<h2 style="color: white;"> 2024 Teamwear Top Sellers! </h2><br><br>
-<section>
-    <h2>Cricket Products</h2><br>
+
+<section id="popular-product">
+    <div class="product-heading">
+        <h2>Cricket Products</h2><br>
+    </div>
     <div class="product-container">
         <% if (cricketProducts && cricketProducts.length > 0) { %>
             <% cricketProducts.forEach(product => { %>
                 <div class="product-box">
                     <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
-                    <h3><%= product.name %></h3>
-                    <p><%= product.description %></p>
-                    <p>$<%= product.price %></p>
-                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    <strong><%= product.name %></strong>
+                    <span class="description"><%= product.description %></span>
+                    <span class="price">$<%= product.price %></span>
+                    <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
                 </div>
             <% }); %>
         <% } else { %>
             <p>No cricket products available.</p>
         <% } %>
-    </div>
-</section>
-
-<section>
+    </div><br><br>
     <h2>Football Products</h2><br>
-    <div class="product-container">
         <div class="product-container">
             <% if (footballProducts && footballProducts.length > 0) { %>
                 <% footballProducts.forEach(product => { %>
                     <div class="product-box">
                         <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
-                        <h3><%= product.name %></h3>
-                        <p><%= product.description %></p>
-                        <p>$<%= product.price %></p>
+                        <strong><%= product.name %></strong>
+                        <span class="description"><%= product.description %></span>
+                        <span class="price">$<%= product.price %></span>
                         <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                     </div>
                 <% }); %>
@@ -193,7 +192,7 @@
                         body: JSON.stringify({ productId, quantity })
                     });
                     const result = await response.json();
-                    alert(result.message);
+                    console.log(result.message);
                 } catch (error) {
                     console.error('Error adding product to cart:', error);
                     alert('Error adding product to cart');

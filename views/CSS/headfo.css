@@ -1,0 +1,173 @@
+header {
+    background-color: transparent;
+    padding: 10px;
+    background-size: cover;
+    background-position: center;
+    text-align: right;
+  }
+  
+  .account-button,
+  .profile-button,
+  .cart-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 30px;
+    color:white;
+  }
+  
+  .profile-button img,
+  .cart-button img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px; 
+  }
+  
+  .header-content {
+    text-decoration: wavy;
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    flex: 1;
+    color: whitesmoke; 
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    margin: 0 auto; 
+    max-width: 500px;
+    position: relative;
+  }
+  
+  .search-bar input[type="text"] {
+    padding: 10px;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    width: 100%;
+  }
+  
+  .search-bar button {
+    position: absolute;
+    right: 5px;
+    padding: 5px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .search-bar button img {
+    width: 20px;
+    height: auto;
+  }
+  .footer {
+    background-color: transparent;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    color: white;
+  }
+  
+  .column {
+    flex: 1;
+    margin-right: 20px;
+    color: white;    
+  }
+  
+  .column:last-child {
+    margin-right: 0;
+  }
+  
+  h3 {
+    margin-bottom: 10px;
+    color: white;
+  }
+  
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  ul li {
+    margin-bottom: 5px;
+  }
+  
+  a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  .footer-bottom {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+  }
+  
+  .social-media {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-media li {
+    margin-right: 10px;
+  }
+  
+  .social-media img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .follow-us {
+    margin-right: 10px;
+    color: white;
+    text-align: center;
+  }
+  .social-media {
+    display: flex;
+    align-items: center;
+  }
+  
+  .social-media li {
+    margin-right: 10px;
+  }
+  
+  .social-media img {
+    width: 30px;
+    height: 30px;
+  }
+  .account-button,
+  .profile-button,
+  .cart-button {
+    border: none;
+    background: none;
+    cursor: pointer;
+    margin-right: 30px;
+    color:white;
+  }
+  
+  .profile-button img,
+  .cart-button img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    margin-right: 5px; 
+  }
+  
