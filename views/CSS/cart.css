@@ -45,7 +45,25 @@ body {
 .navigation a:hover {
   text-decoration: underline;
 }
-
+.quantity-controls {
+  display: flex;
+  align-items: center;
+}
+.quantity-controls button {
+  cursor: pointer;
+  padding: 5px 10px;
+  background-color: #f0f0f0;
+  border: none;
+  margin-right: 5px;
+  font-size: 16px;
+  line-height: 1;
+}
+.quantity-controls input {
+  width: 50px;
+  text-align: center;
+  font-size: 16px;
+  padding: 5px;
+}
 .container {
   max-width: 1200px;
   color:white;

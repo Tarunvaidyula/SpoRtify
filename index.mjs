@@ -75,6 +75,7 @@ app.get('/confirmation',ensureAuthenticated, async (req, res) => {
     res.render('confirmation');
 });
 
+
 app.get('/homepage',ensureAuthenticated, async (req, res) => {
     try {
         const cricketProducts = await Product.find({ category: 'cricket' }).lean();
@@ -83,6 +84,25 @@ app.get('/homepage',ensureAuthenticated, async (req, res) => {
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
+    }
+});
+app.get('/football-products', async (req, res) => {
+    try {
+        const footballProducts = await Product.find({ category: 'football' });
+        res.render('football-products', { footballProducts });
+    } catch (error) {
+        console.error('Error fetching football products:', error);
+        res.status(500).send('Error fetching football products');
+    }
+});
+
+app.get('/cricket-products', async (req, res) => {
+    try {
+        const cricketProducts = await Product.find({ category: 'cricket' });
+        res.render('cricket-products', { cricketProducts });
+    } catch (error) {
+        console.error('Error fetching cricket products:', error);
+        res.status(500).send('Error fetching cricket products');
     }
 });
 
