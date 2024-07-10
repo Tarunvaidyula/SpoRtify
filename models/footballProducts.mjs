@@ -36,7 +36,7 @@ export async function seedFootballProducts() {
         for (const product of footballProducts) {
             for (const product of footballProducts) {
                 await Product.updateOne({ name: product.name }, { $setOnInsert: product }, { upsert: true });
-                console.log(`Cricket product saved: ${product.name}`);
+                console.log(`FootBall products: ${product.name}`);
             }
         }
     } catch (error) {

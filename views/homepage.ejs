@@ -6,6 +6,7 @@
     <title>Home - F1 Store</title>
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
     <link rel="stylesheet" href="css/headfo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <header>
@@ -22,8 +23,16 @@
             </div>
             <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
         <% } else { %>
-    <a href="login" style="color: white"><button class="profile-button"><img src="images/profile-icon.jpg" alt="Profile Icon"><br>Login</a></button>
-        <%}%><a href="cart" style="color: white"><button class="cart-button"><img src="images/cart-icon.png" alt="Cart Icon"><br>Cart</a></button>
+            <a href="login" style="color: white">
+                <button class="profile-button">
+                  <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
+                </button>
+              </a>
+        <%}%><a href="cart" style="color: white">
+            <button class="cart-button">
+              <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+            </button>
+          </a>
 </div>
     </header>
     <div class="Navbar">
@@ -34,8 +43,8 @@
                 <ul class="dropdown" style="display: none;">
                     <li><a href="football-products">football</a></li>
                     <li><a href="cricket-products">cricket</a></li>
-                    <li><a href="">Boxing</a></li>
-                    <li><a href="">Basketball</a></li>
+                    <li><a href="boxing-products">Boxing</a></li>
+                    <li><a href="basketBall-products">Basketball</a></li>
                 </ul>
             </li>
             <li><a href="">Shop By Sport</a>
@@ -56,7 +65,6 @@
                     <li><a href="">Jerseys</a></li>
                     <li><a href="">Tracks</a></li>
                     <li><a href="">Backpacks & Bags</a></li>
-                    <li><a href="">Headwear</a></li>
                     <li><a href="">Shoes</a></li>
                     <li><a href="">Gloves & Guards</a></li>
                 </ul>
@@ -74,23 +82,23 @@
         <h2>New Arrivals in 2024! , <a href="" style="color: black;"> Shop Now >></a></h2>
     </div><br><br>   
     <main><center>
-        <h2 class="shop-team">Shop By Sport</h2>
+        <h2 class="shop-team">Shop By Brand</h2>
         <div class="product-container1">
             <ul class="product-list">
                 <li class="product-item">
-                    <a href=""><img src="images/alpine.png" alt="Alpine" width="100"></a></li>
+                    <a href=""><img src="https://gifdb.com/images/high/nike-text-logo-animation-8hztheflutey4ag5.gif" alt="Nike" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="images/Mercedes.png" alt="Mercedes" width="100"></a></li>
+                    <a href=""><img src="https://i.pinimg.com/originals/e8/5d/22/e85d22b3e4d48944de66184b61a95435.gif" alt="Adidas" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="images/Haas.png" alt="Haas" width="100"></a></li>
+                    <a href=""><img src="https://media3.giphy.com/media/hXMP0cHxx82GRq6nQX/200w.gif?cid=82a1493btt79htumni9r7ehpmpl9qssw7oig84e3bt1yo342&ep=v1_gifs_related&rid=200w.gif&ct=g" alt="Decathlon" width="100"></a></li>
                 </li>
                 <li class="product-item">
-                    <a href=""><img src="images/redbull.jpg" alt="Redbull" width="100"></a></li>
+                    <a href=""><img src="https://i.pinimg.com/originals/cb/9d/1a/cb9d1a912e857068caf2fe481f858d80.gif" alt="Puma" width="100"></a></li>
                 </li>
                 <li class="product-item">
-                    <a href=""><img src="images/aston.png" alt="Aston Martin" width="100"></a></li>
+                    <a href=""><img src="https://i.pinimg.com/originals/23/eb/e7/23ebe7caf5997ac2fc985eceb7b99c32.gif" alt="Reebok" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="images/ferrari.png" alt="ferrari" width="50" height="50"></a>
+                    <a href=""><img src="https://cdn.dribbble.com/users/1161517/screenshots/7463720/fila_logo.gif" alt="Fila" width="50" height="50"></a>
                 </li>
             </ul>
         </div>
@@ -106,6 +114,45 @@
             <span class="nav-arrow" onclick="nextImage()">&#10095;</span>
         </div>
     </div><br><br>
+
+    <div class="sport-boxes-container">
+        <div class="sport-box">
+            <a href="football-products">
+                <img src="https://assets-global.website-files.com/5ca5fe687e34be0992df1fbe/61b5911c9d37d0449acee390_soccer-ball-on-grass-in-corner-kick-position-on-so-2021-08-29-10-46-54-utc-min.jpg" alt="Football">
+                <h3>Football</h3>
+            </a>
+        </div>
+        <div class="sport-box">
+            <a href="cricket-products">
+                <img src="https://i.pinimg.com/1200x/94/88/a4/9488a437a89042b492ee0afc551cd241.jpg" alt="Cricket">
+                <h3>Cricket</h3>
+            </a>
+        </div>
+        <div class="sport-box">
+            <a href="boxing-products">
+                <img src="https://static.standard.co.uk/s3fs-public/thumbnails/image/2017/05/11/17/boxing-header.jpg?width=1200&height=630&fit=crop" width="200" height="200" alt="Boxing">
+                <h3>Boxing</h3>
+            </a>
+        </div>
+        <div class="sport-box">
+            <a href="basketball-products">
+                <img src="https://i.ebayimg.com/images/g/tXEAAOSwVhZlbYya/s-l400.jpg" width="200" height="200" alt="Basketball">
+                <h3>Basketball</h3>
+            </a>
+        </div>
+        <div class="sport-box">
+            <a href="tabletennis-products">
+                <img src="https://media.self.com/photos/5c360cc973e3cb2ca1e0fd35/4:3/w_2560%2Cc_limit/table-tennis.jpg" alt="Table-Tennis">
+                <h3>Table Tennis</h3>
+            </a>
+            </div>
+            <div class="sport-box">
+                <a href="badminton-products">
+                    <img src="https://www.tutorialspoint.com/badminton/images/badminton_racket.jpg" alt="Badminton">
+                    <h3>Badminton</h3>
+                </a>
+                </div>
+    </div>    
 
 <section id="popular-product">
     <div class="product-heading">
@@ -143,8 +190,51 @@
             <% } %>
         </div>
     </div>
+    <h2>Basketball Products</h2><br>
+        <div class="product-container">
+            <% if (basketBallProducts && basketBallProducts.length > 0) { %>
+                <% basketBallProducts.forEach(product => { %>
+                    <div class="product-box">
+                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                        <strong><%= product.name %></strong>
+                        <span class="description"><%= product.description %></span>
+                        <span class="price">$<%= product.price %></span>
+                        <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No baketBall products available.</p>
+            <% } %>
+        </div>
+    </div>
 </section>
-    </main>
+<div class="sport-kit">
+    <div class="kit">
+        <img src="" alt="Men" data-product-id="cricket">
+            <h3>Cricket Kit</h3>
+        </a>
+    </div>
+    <div class="kit">
+        <a href="#" onclick="openModal('football')">
+            <img src="images/women.jpg" alt="Women" data-product-id="football">
+            <h3>Football Kit</h3>
+        </a>
+    </div>
+    <div class="kit">
+        <a href="#" onclick="openModal('badminton')">
+            <img src="" alt="Kids" data-product-id="badminton">
+            <h3>Badminton Kit</h3>
+        </a>
+    </div>
+</div>
+<div id="modal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div id="modalBody">
+        </div>
+    </div>
+</div>
+</main><br><br><br><br>
     <footer class="footer">
         <div class="footer-content">
             <div class="column">
@@ -156,8 +246,8 @@
                 <ul> <% if (isAuthenticated) {%>
                     <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
                 <% } else { %>
-            <li><a href="login">Login</a></li>
-            <li><a href="signup">SignUp</a></li>
+            <li><a href="login">Login</a></li><br>
+            <li><a href="signup">SignUp</a></li><br>
                 <%}%>
                     <li><a href="profile">Profile</a></li>
                 </ul>
@@ -170,35 +260,13 @@
         <div class="footer-bottom">
             <ul class="social-media">
                 <li><b>Follow Us: </b></li>
-                <li><a href="https://www.facebook.com"><img src="images/facebook.png" alt="facebook"></a></li>
-                <li><a href="https://www.instagram.com"><img src="images/insta.jpeg" alt="instagram"></a></li>
-                <li><a href="https://twitter.com"><img src="images/twitter.jpg" alt="twitter"></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-facebook-f" style="font-size:30px"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-twitter" style="font-size:30px"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-instagram" style="font-size:30px"></i></a></li>
             </ul>
             <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
         </div>
     </footer>
     <script src="js/homepage.js"></script>
-    <script>
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', async () => {
-                const productId = button.getAttribute('data-id');
-                const quantity = 1;
-                try {
-                    const response = await fetch('/cart/add', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ productId, quantity })
-                    });
-                    const result = await response.json();
-                    console.log(result.message);
-                } catch (error) {
-                    console.error('Error adding product to cart:', error);
-                    alert('Error adding product to cart');
-                }
-            });
-        });
-    </script>
 </body>
 </html>

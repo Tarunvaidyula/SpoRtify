@@ -92,10 +92,11 @@ export async function seedCricketProducts() {
         for (const product of cricketProducts) {
             for (const product of cricketProducts) {
                 await Product.updateOne({ name: product.name }, { $setOnInsert: product }, { upsert: true });
-                console.log(`Cricket product saved: ${product.name}`);
+                console.log(`Cricket products: ${product.name}`);
             }
         }
     } catch (error) {
         console.error('Error saving cricket products:', error);
     }
 }
+

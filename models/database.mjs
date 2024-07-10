@@ -21,13 +21,17 @@ const UserSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 const ProductSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     name: { type: String, unique: true, index: true },
     price: { type: Number, required: true },
     category: String,
     description: String,
     stock: { type: Number, default: 0 },
     image: String,
-}, { timestamps: true });
+    brand: String,
+    ratings: { type: Number, default: 0 },
+    inStock: { type: Boolean, default: true }
+    },{ timestamps: true });
 
 const CartItemSchema = new mongoose.Schema({
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },

@@ -4,25 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cricket Products</title>
-    <link rel="stylesheet" href="/CSS/homepage.css">
+    <link rel="stylesheet" href="/CSS/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <link rel="stylesheet" href="/CSS/headfo.css">
 </head>
 <body>
     <header>
-        <div class="header-content">
-           <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
-        </div><br>
-        <div class="search-bar">
-            <input type="text" placeholder="search">
-            <button type="submit"><img src="images/search.jpg" alt="search"></button>
-        </div><br>
-        <% if (isAuthenticated) {%>
-            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
-        <% } else { %>
-    <a href="login" style="color: white"><button class="profile-button"><img src="images/profile-icon.jpg" alt="Profile Icon"><br>Login</a></button>
-        <%}%><a href="cart" style="color: white"><button class="cart-button"><img src="images/cart-icon.png" alt="Cart Icon"><br>Cart</a></button>
-</div>
-    </header>
+    <div class="header-content">
+               <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
+            </div><br>
+            <div class="search-bar">
+                <input type="text" placeholder="search">
+                <button type="submit"><img src="images/search.jpg" alt="search"></button>
+            </div><br>
+            <% if (isAuthenticated) {%>
+                <div class="welcome-message">
+                <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
+                </div>
+                <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+            <% } else { %>
+                <a href="login" style="color: white">
+                    <button class="profile-button">
+                      <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
+                    </button>
+                    </a>
+            <%}%><a href="cart" style="color: white">
+                <button class="cart-button">
+                  <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+                </button>
+              </a>
+    </div>
+        </header><br><br><br><br>
+
+    <h1>Cricket Products</h1>
     <div class="product-container">
         <% if (cricketProducts && cricketProducts.length > 0) { %>
             <% cricketProducts.forEach(product => { %>
@@ -37,7 +51,7 @@
         <% } else { %>
             <p>No cricket products available.</p>
         <% } %>
-    </div>
+    </div><br><br><br><br>
     <footer class="footer">
         <div class="footer-content">
             <div class="column">
@@ -46,10 +60,15 @@
                 <h3>Account</h3>
                 <ul>
                     <% if (isAuthenticated) {%>
-                        <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+                        <a href="logout" style="color: white">
+                           Logout </a><br><br>
                     <% } else { %>
-                <li><a href="login" style="color: white"><button class="profile-button"><img src="images/profile-icon.jpg" alt="Profile Icon"><br>Login</a></button><br></li>
-                <li><a href="signup" style="color: white"><button class="profile-button"><img src="images/profile-icon.jpg" alt="Profile Icon"><br>Sign Up</a></button></li>
+                        <a href="login" style="color: white">
+                            Login
+                            </a><br><br>
+                            <a href="signup" style="color: white">
+                            Sign Up
+                          </a><br><br>
                     <%}%>
                     <li><a href="profile">Profile</a></li>
                 </ul>
@@ -62,9 +81,9 @@
         <div class="footer-bottom">
             <ul class="social-media">
                 <li><b>Follow Us: </b></li>
-                <li><a href="https://www.facebook.com"><img src="images/facebook.png" alt="facebook"></a></li>
-                <li><a href="https://www.instagram.com"><img src="images/insta.jpeg" alt="instagram"></a></li>
-                <li><a href="https://twitter.com"><img src="images/twitter.jpg" alt="twitter"></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-facebook-f" style="font-size:30px"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-twitter" style="font-size:30px"></i></a></li>
+                    <li><a href="#" class="icon"><i class="fab fa-instagram" style="font-size:30px"></i></a></li>
             </ul>
             <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
         </div>

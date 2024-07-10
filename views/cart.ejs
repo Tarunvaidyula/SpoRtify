@@ -9,45 +9,36 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
     <script src="https://kit.fontawesome.com/9088cc6401.js" crossorigin="anonymous"></script>
     <style>
-        .quantity-controls {
-            display: flex;
-            align-items: center;
-        }
-        .quantity-controls button {
-            cursor: pointer;
-            padding: 5px 10px;
-            background-color: #f0f0f0;
-            border: none;
-            margin-right: 5px;
-            font-size: 16px;
-            line-height: 1;
-        }
-        .quantity-controls input {
-            width: 50px;
-            text-align: center;
-            font-size: 16px;
-            padding: 5px;
-        }
+        
     </style>
 </head>
 <body>
-<header>
-    <div class="header-content">
-        <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
-    </div>
-</header>
-<div class="container">
-    <ul class="navigation">
-        <li><a href="homepage">Home</a></li>
-        <% if (isAuthenticated) { %>
-            <li>
-                <a href="logout">Logout</a>
-            </li>
+    <header>
+        <div class="header-content">
+           <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
+        </div><br>
+        <div class="search-bar">
+            <input type="text" placeholder="search">
+            <button type="submit"><img src="images/search.jpg" alt="search"></button>
+        </div><br>
+        <% if (isAuthenticated) {%>
+            <div class="welcome-message">
+            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
+            </div>
+            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
         <% } else { %>
-            <li><a href="signup">Sign up</a></li>
-            <li><a href="login">Login</a></li>
-        <% } %>
-    </ul>
+            <a href="login" style="color: white">
+                <button class="profile-button">
+                  <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
+                </button>
+              </a>
+        <%}%><a href="cart" style="color: white">
+            <button class="cart-button">
+              <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+            </button>
+          </a>
+</div>
+    </header><br><br><br>
     <div class="cart">
         <div class="products">
             <% if (cart && cart.items.length > 0) { %>
@@ -77,13 +68,13 @@
             <% } %>
         </div>
         <div class="cart-total">
-            <h2>Cart Summary</h2>
+            <h2>Cart Summary</h2><br><br>
             <p>Total Items: <%= totalItems %></p>
             <p>Total Amount: $<%= totalAmount %></p>
             <a href="/checkout">Proceed to Checkout</a>
         </div>
     </div>
-</div>
+</div><br><br><br><br>
 <footer class="footer">
     <div class="footer-content">
         <div class="column">
@@ -109,12 +100,12 @@
     </div>
     <div class="footer-bottom">
         <ul class="social-media">
-            <li><b>Follow Us:</b></li>
-            <li><a href=""><img src="images/facebook.png" alt="facebook"></a></li>
-            <li><a href=""><img src="images/insta.jpeg" alt="instagram"></a></li>
-            <li><a href=""><img src="images/twitter.jpg" alt="twitter"></a></li>
+            <li><b>Follow Us: </b></li>
+                <li><a href="#" class="icon"><i class="fab fa-facebook-f" style="font-size:30px"></i></a></li>
+                <li><a href="#" class="icon"><i class="fab fa-twitter" style="font-size:30px"></i></a></li>
+                <li><a href="#" class="icon"><i class="fab fa-instagram" style="font-size:30px"></i></a></li>
         </ul>
-        <p>&copy; 2024 F1 Store. All rights reserved.</p>
+        <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
     </div>
 </footer>
 <script src="js/cart.js"></script>

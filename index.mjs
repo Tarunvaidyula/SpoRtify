@@ -7,8 +7,13 @@ import twilio from 'twilio';
 import { User, Product, Cart, Order } from './models/database.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
+import { seedbasketBallProducts } from './models/basketBallproducts.mjs';
+import { seedboxingProducts } from './models/boxingProducts.mjs';
+import {seedtabletennisProducts} from './models/tabletennisProducts.mjs';
+import {seedbadmintonProducts} from './models/badmintonProducts.mjs';
 import { forwardAuthenticated, ensureAuthenticated } from './config/passport.mjs';
 import cartRoutes from './cartRoutes.mjs';
+import productRoutes from './productRoutes.mjs';
 
 dotenv.config();
 
@@ -24,17 +29,18 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 12 }
+    cookie: { maxAge: 1000 * 60 * 60 * 1 }
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cartRoutes);
+app.use(productRoutes);
 
 // View engine setup
 app.set('view engine', 'ejs');
 app.use(express.static('views'));
 
-// Custom middleware to pass authentication status to views
+// middleware for authentication views
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.isAuthenticated();
     next();
@@ -45,7 +51,11 @@ app.get('/', async (req, res) => {
     try {
         const cricketProducts = await Product.find({ category: 'cricket' }).lean();
         const footballProducts = await Product.find({ category: 'football' }).lean();
-        res.render('homepage', { cricketProducts, footballProducts });
+        const basketBallProducts = await Product.find({ category: 'basketball' }).lean();
+        const boxingProducts = await Product.find({ category: 'boxing' }).lean();
+        const tabletennisProducts = await Product.find({ category: 'tabletennis' }).lean();
+        const badmintonProducts = await Product.find({ category: 'badminton' }).lean();
+        res.render('homepage', { cricketProducts, footballProducts, basketBallProducts, boxingProducts, tabletennisProducts, badmintonProducts});
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
@@ -80,29 +90,14 @@ app.get('/homepage',ensureAuthenticated, async (req, res) => {
     try {
         const cricketProducts = await Product.find({ category: 'cricket' }).lean();
         const footballProducts = await Product.find({ category: 'football' }).lean();
-        res.render('homepage', { user: req.user, cricketProducts, footballProducts});
+        const basketBallProducts = await Product.find({ category: 'basketball' }).lean();
+        const boxingProducts = await Product.find({ category: 'boxing' }).lean();
+        const tabletennisProducts = await Product.find({ category: 'tabletennis' }).lean();
+        const badmintonProducts = await Product.find({ category: 'badminton' }).lean();
+        res.render('homepage', { user: req.user, cricketProducts, footballProducts, basketBallProducts, boxingProducts, tabletennisProducts, badmintonProducts });
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
-    }
-});
-app.get('/football-products', async (req, res) => {
-    try {
-        const footballProducts = await Product.find({ category: 'football' });
-        res.render('football-products', { footballProducts });
-    } catch (error) {
-        console.error('Error fetching football products:', error);
-        res.status(500).send('Error fetching football products');
-    }
-});
-
-app.get('/cricket-products', async (req, res) => {
-    try {
-        const cricketProducts = await Product.find({ category: 'cricket' });
-        res.render('cricket-products', { cricketProducts });
-    } catch (error) {
-        console.error('Error fetching cricket products:', error);
-        res.status(500).send('Error fetching cricket products');
     }
 });
 
@@ -269,6 +264,10 @@ async function seedDatabase() {
     try {
         await seedCricketProducts();
         await seedFootballProducts();
+        await seedbasketBallProducts();
+        await seedboxingProducts();
+        await seedtabletennisProducts();
+        await seedbadmintonProducts();
         console.log('Database seeding complete.');
     } catch (error) {
         console.error('Error seeding database:', error);

@@ -3,55 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Football Products</title>
+    <title>Boxing Products</title>
     <link rel="stylesheet" href="/CSS/products.css">
-    <link rel="stylesheet" href="/CSS/headfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+    <link rel="stylesheet" href="/CSS/headfo.css">
 </head>
 <body>
     <header>
         <div class="header-content">
-               <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
-            </div><br>
-            <div class="search-bar">
-                <input type="text" placeholder="search">
-                <button type="submit"><img src="images/search.jpg" alt="search"></button>
-            </div><br>
-            <% if (isAuthenticated) {%>
-                <div class="welcome-message">
-                <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
-                </div>
-                <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
-            <% } else { %>
-                <a href="login" style="color: white">
-                    <button class="profile-button">
-                      <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
-                    </button>
-                  </a>
-            <%}%><a href="cart" style="color: white">
-                <button class="cart-button">
-                  <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+           <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
+        </div><br>
+        <div class="search-bar">
+            <input type="text" placeholder="search">
+            <button type="submit"><img src="images/search.jpg" alt="search"></button>
+        </div><br>
+        <% if (isAuthenticated) {%>
+            <div class="welcome-message">
+            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
+            </div>
+            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+        <% } else { %>
+            <a href="login" style="color: white">
+                <button class="profile-button">
+                  <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
                 </button>
               </a>
-    </div>
+        <%}%><a href="cart" style="color: white">
+            <button class="cart-button">
+              <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+            </button>
+          </a>
+</div>
     </header><br><br><br><br>
-    <h1>Football Products</h1>
     <div class="product-container">
-        <% if (footballProducts && footballProducts.length > 0) { %>
-            <% footballProducts.forEach(product => { %>
+        <% if (badmintonProducts && badmintonProducts.length > 0) { %>
+            <% badmintonProducts.forEach(product => { %>
                 <div class="product-box">
                     <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
                     <span class="price">$<%= product.price %></span>
-                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
                 </div>
             <% }); %>
         <% } else { %>
-            <p>No football products available.</p>
+            <p>No badminton products available.</p>
         <% } %>
-    </div>
-</div><br><br><br><br>
+    </div><br><br><br><br>
     <footer class="footer">
         <div class="footer-content">
             <div class="column">
@@ -101,7 +99,7 @@
                         body: JSON.stringify({ productId, quantity: 1 })
                     });
                     const result = await response.json();
-                    console.log(result.message);
+                    alert(result.message);
                 } catch (error) {
                     console.error('Error adding product to cart:', error);
                     alert('Error adding product to cart');
