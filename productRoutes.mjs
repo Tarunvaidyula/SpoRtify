@@ -59,8 +59,6 @@ router.get('/tabletennis-products', async (req, res) => {
     
 });
 
-
-
 router.get('/badminton-products', async (req, res) => {
     try {
         const badmintonProducts = await Product.find({ category: 'badminton' });
