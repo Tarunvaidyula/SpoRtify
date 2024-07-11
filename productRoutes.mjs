@@ -24,15 +24,18 @@ router.get('/cricket-products', async (req, res) => {
         res.status(500).send('Error fetching cricket products');
     }
 });
-router.get('/basketBall-products', async (req, res) => {
+
+
+router.get('/basketball-products', async (req, res) => {
     try {
-        const basketBallProducts = await Product.find({ category: 'basketball' });
-        res.render('basketBall-products', { basketBallProducts });
+        const basketballProducts = await Product.find({ category: 'basketball' });
+        res.render('basketball-products', { basketballProducts });
     } catch (error) {
         console.error('Error fetching basketball products:', error);
         res.status(500).send('Error fetching basketball products');
     }
 });
+
 
 router.get('/boxing-products', async (req, res) => {
     try {
@@ -44,6 +47,7 @@ router.get('/boxing-products', async (req, res) => {
     }
 });
 
+
 router.get('/tabletennis-products', async (req, res) => {
     try {
         const tabletennisProducts = await Product.find({ category: 'tabletennis' });
@@ -52,7 +56,11 @@ router.get('/tabletennis-products', async (req, res) => {
         console.error('Error fetching tabletennis products:', error);
         res.status(500).send('Error fetching tabletennis products');
     }
+    
 });
+
+
+
 router.get('/badminton-products', async (req, res) => {
     try {
         const badmintonProducts = await Product.find({ category: 'badminton' });
@@ -62,7 +70,16 @@ router.get('/badminton-products', async (req, res) => {
         res.status(500).send('Error fetching badminton products');
     }
 });
+router.get('/products-by-brand/:brandName', async (req, res) => {
+    const { brandName } = req.params;
 
-
+    try {
+        const products = await Product.find({ brand: brandName });
+        res.render('productsByBrand', { brandName, products });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
+});
 
 export default router;

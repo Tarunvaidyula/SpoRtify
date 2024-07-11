@@ -44,7 +44,7 @@
                     <li><a href="football-products">Jerseys</a></li>
                     <li><a href="cricket-products">Tracks</a></li>
                     <li><a href="boxing-products">Bands/<br>Sleeves</a></li>
-                    <li><a href="basketBall-products">Goggles/<br>Sports Glasses</a></li>
+                    <li><a href="basketball-products">Goggles/<br>Sports Glasses</a></li>
                 </ul>
             </li>
             <li><a href="">Shop By Sport</a>
@@ -52,7 +52,7 @@
                     <li><a href="football-products">football</a></li>
                     <li><a href="cricket-products">cricket</a></li>
                     <li><a href="boxing-products">Boxing</a></li>
-                    <li><a href="basketBall-products">Basketball</a></li>
+                    <li><a href="basketball-products">basketball</a></li>
                     <li><a href="tabletennis-products">Table-tennis</a></li>
                     <li><a href="badminton-products">Badminton</a></li>
                 </ul>
@@ -86,19 +86,19 @@
         <div class="product-container1">
             <ul class="product-list">
                 <li class="product-item">
-                    <a href=""><img src="https://gifdb.com/images/high/nike-text-logo-animation-8hztheflutey4ag5.gif" alt="Nike" width="100"></a></li>
+                    <a href="/products-by-brand/Nike"><img src="https://gifdb.com/images/high/nike-text-logo-animation-8hztheflutey4ag5.gif" alt="Nike" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="https://i.pinimg.com/originals/e8/5d/22/e85d22b3e4d48944de66184b61a95435.gif" alt="Adidas" width="100"></a></li>
+                    <a href="/products-by-brand/Adidas"><img src="https://i.pinimg.com/originals/e8/5d/22/e85d22b3e4d48944de66184b61a95435.gif" alt="Adidas" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="https://media3.giphy.com/media/hXMP0cHxx82GRq6nQX/200w.gif?cid=82a1493btt79htumni9r7ehpmpl9qssw7oig84e3bt1yo342&ep=v1_gifs_related&rid=200w.gif&ct=g" alt="Decathlon" width="100"></a></li>
+                    <a href="/products-by-brand/Decathlon"><img src="https://media3.giphy.com/media/hXMP0cHxx82GRq6nQX/200w.gif?cid=82a1493btt79htumni9r7ehpmpl9qssw7oig84e3bt1yo342&ep=v1_gifs_related&rid=200w.gif&ct=g" alt="Decathlon" width="100"></a></li>
                 </li>
                 <li class="product-item">
-                    <a href=""><img src="https://i.pinimg.com/originals/cb/9d/1a/cb9d1a912e857068caf2fe481f858d80.gif" alt="Puma" width="100"></a></li>
+                    <a href="/products-by-brand/Puma"><img src="https://i.pinimg.com/originals/cb/9d/1a/cb9d1a912e857068caf2fe481f858d80.gif" alt="Puma" width="100"></a></li>
                 </li>
                 <li class="product-item">
-                    <a href=""><img src="https://i.pinimg.com/originals/23/eb/e7/23ebe7caf5997ac2fc985eceb7b99c32.gif" alt="Reebok" width="100"></a></li>
+                    <a href="/products-by-brand/Reebok"><img src="https://i.pinimg.com/originals/23/eb/e7/23ebe7caf5997ac2fc985eceb7b99c32.gif" alt="Reebok" width="100"></a></li>
                 <li class="product-item">
-                    <a href=""><img src="https://cdn.dribbble.com/users/1161517/screenshots/7463720/fila_logo.gif" alt="Fila" width="50" height="50"></a>
+                    <a href="/products-by-brand/Fila"><img src="https://cdn.dribbble.com/users/1161517/screenshots/7463720/fila_logo.gif" alt="Fila" width="50" height="50"></a>
                 </li>
             </ul>
         </div>
@@ -136,8 +136,8 @@
         </div>
         <div class="sport-box">
             <a href="basketball-products">
-                <img src="https://i.ebayimg.com/images/g/tXEAAOSwVhZlbYya/s-l400.jpg" width="200" height="200" alt="Basketball">
-                <h3>Basketball</h3>
+                <img src="https://i.ebayimg.com/images/g/tXEAAOSwVhZlbYya/s-l400.jpg" width="200" height="200" alt="basketball">
+                <h3>basketball</h3>
             </a>
         </div>
         <div class="sport-box">
@@ -162,7 +162,7 @@
         <% if (cricketProducts && cricketProducts.length > 0) { %>
             <% cricketProducts.forEach(product => { %>
                 <div class="product-box">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
                     <span class="price">$<%= product.price %></span>
@@ -178,7 +178,7 @@
             <% if (footballProducts && footballProducts.length > 0) { %>
                 <% footballProducts.forEach(product => { %>
                     <div class="product-box">
-                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
                         <strong><%= product.name %></strong>
                         <span class="description"><%= product.description %></span>
                         <span class="price">$<%= product.price %></span>
@@ -190,12 +190,12 @@
             <% } %>
         </div>
     </div>
-    <h2>Basketball Products</h2><br>
+    <h2>Basketball Products</h2>
         <div class="product-container">
-            <% if (basketBallProducts && basketBallProducts.length > 0) { %>
-                <% basketBallProducts.forEach(product => { %>
+            <% if (basketballProducts && basketballProducts.length > 0) { %>
+                <% basketballProducts.forEach(product => { %>
                     <div class="product-box">
-                        <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
                         <strong><%= product.name %></strong>
                         <span class="description"><%= product.description %></span>
                         <span class="price">$<%= product.price %></span>
@@ -207,6 +207,7 @@
             <% } %>
         </div>
     </div>
+    <h2>Kits For You</h2>
 </section>
 <div class="sport-kit">
     <div class="kit">

@@ -39,10 +39,10 @@
         <% if (tabletennisProducts && tabletennisProducts.length > 0) { %>
             <% tabletennisProducts.forEach(product => { %>
                 <div class="product-box">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
-                    <span class="price">$<%= product.price %></span>
+                    <span class="price">Rs.<%= product.price %></span>
                     <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
                 </div>
             <% }); %>

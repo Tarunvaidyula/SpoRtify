@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basketball Products</title>
+    <title>basketball Products</title>
     <link rel="stylesheet" href="/CSS/products.css">
     <link rel="stylesheet" href="/CSS/headfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
@@ -36,18 +36,18 @@
     </header>
 <br><br><br><br>
     <div class="product-container">
-        <% if (basketBallProducts && basketBallProducts.length > 0) { %>
-            <% basketBallProducts.forEach(product => { %>
+        <% if (basketballProducts && basketballProducts.length > 0) { %>
+            <% basketballProducts.forEach(product => { %>
                 <div class="product-box">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
-                    <span class="price">$<%= product.price %></span>
+                    <span class="price">Rs.<%= product.price %></span>
                     <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
                 </div>
             <% }); %>
         <% } else { %>
-            <p>No Basketball products available.</p>
+            <p>No basketball products available.</p>
         <% } %>
     </div><br><br><br><br>
     <footer class="footer">

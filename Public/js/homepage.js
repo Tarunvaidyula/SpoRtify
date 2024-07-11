@@ -49,29 +49,29 @@ document.addEventListener('DOMContentLoaded', function() {
 let currentIndex = 0;
     const images = document.querySelectorAll('.product-image');
 
-    function showImage(index) {
+    function showimage(index) {
         images.forEach(image => image.style.display = 'none');
         images[index].style.display = 'block';
     }
 
-    function nextImage() {
+    function nextimage() {
         currentIndex = (currentIndex + 1) % images.length;
-        showImage(currentIndex);
+        showimage(currentIndex);
     }
 
-    function prevImage() {
+    function previmage() {
         currentIndex = (currentIndex - 1 + images.length) % images.length;
-        showImage(currentIndex);
+        showimage(currentIndex);
     }
 
-    function autoSwitchImage() {
-        setInterval(nextImage, 8000);
+    function autoSwitchimage() {
+        setInterval(nextimage, 8000);
     }
     function goToProduct() {
         console.log("Go to product page");
     }
-    showImage(currentIndex);
-    autoSwitchImage();
+    showimage(currentIndex);
+    autoSwitchimage();
 
     document.addEventListener('DOMContentLoaded', function() {
         const marquee = document.querySelector('.marquee span');

@@ -4,10 +4,12 @@ import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import passport from 'passport';
 import twilio from 'twilio';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { User, Product, Cart, Order } from './models/database.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
-import { seedbasketBallProducts } from './models/basketBallproducts.mjs';
+import { seedbasketballProducts } from './models/basketballproducts.mjs';
 import { seedboxingProducts } from './models/boxingProducts.mjs';
 import {seedtabletennisProducts} from './models/tabletennisProducts.mjs';
 import {seedbadmintonProducts} from './models/badmintonProducts.mjs';
@@ -23,7 +25,6 @@ const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TO
 
 // Middleware
 app.use(express.json());
-app.use(express.static('views'));
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -37,8 +38,10 @@ app.use(cartRoutes);
 app.use(productRoutes);
 
 // View engine setup
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
-app.use(express.static('views'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // middleware for authentication views
 app.use((req, res, next) => {
@@ -49,13 +52,43 @@ app.use((req, res, next) => {
 // Routes
 app.get('/', async (req, res) => {
     try {
-        const cricketProducts = await Product.find({ category: 'cricket' }).lean();
-        const footballProducts = await Product.find({ category: 'football' }).lean();
-        const basketBallProducts = await Product.find({ category: 'basketball' }).lean();
-        const boxingProducts = await Product.find({ category: 'boxing' }).lean();
-        const tabletennisProducts = await Product.find({ category: 'tabletennis' }).lean();
-        const badmintonProducts = await Product.find({ category: 'badminton' }).lean();
-        res.render('homepage', { cricketProducts, footballProducts, basketBallProducts, boxingProducts, tabletennisProducts, badmintonProducts});
+        const cricketProducts = await Product.aggregate([
+            { $match: { category: 'cricket' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedCricketProducts = cricketProducts.map(item => item.product);
+
+        const footballProducts = await Product.aggregate([
+            { $match: { category: 'football' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedfootball= footballProducts.map(item => item.product);
+
+        const basketballProducts = await Product.aggregate([
+            { $match: { category: 'basketball' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedbasketball= basketballProducts.map(item => item.product);
+
+        const boxingProducts = await Product.aggregate([
+            { $match: { category: 'boxing' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedboxing= boxingProducts.map(item => item.product);
+
+        const tabletennisProducts = await Product.aggregate([
+            { $match: { category: 'tabletennis' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedtt= tabletennisProducts.map(item => item.product);
+
+        const badmintonProducts = await Product.aggregate([
+            { $match: { category: 'badminton' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedbadminton= badmintonProducts.map(item => item.product);
+
+        res.render('homepage', { cricketProducts:simplifiedCricketProducts, footballProducts:simplifiedfootball, basketballProducts:simplifiedbasketball, boxingProducts:simplifiedboxing, tabletennisProducts:simplifiedtt, badmintonProducts:simplifiedbadminton});
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
@@ -84,17 +117,49 @@ app.get('/pay',ensureAuthenticated, async (req, res) => {
 app.get('/confirmation',ensureAuthenticated, async (req, res) => {
     res.render('confirmation');
 });
-
+app.get('/products-by-brand/:brandName', async (req, res) => {
+    res.render('productsByBrand');
+});
 
 app.get('/homepage',ensureAuthenticated, async (req, res) => {
     try {
-        const cricketProducts = await Product.find({ category: 'cricket' }).lean();
-        const footballProducts = await Product.find({ category: 'football' }).lean();
-        const basketBallProducts = await Product.find({ category: 'basketball' }).lean();
-        const boxingProducts = await Product.find({ category: 'boxing' }).lean();
-        const tabletennisProducts = await Product.find({ category: 'tabletennis' }).lean();
-        const badmintonProducts = await Product.find({ category: 'badminton' }).lean();
-        res.render('homepage', { user: req.user, cricketProducts, footballProducts, basketBallProducts, boxingProducts, tabletennisProducts, badmintonProducts });
+        const cricketProducts = await Product.aggregate([
+            { $match: { category: 'cricket' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedCricketProducts = cricketProducts.map(item => item.product);
+
+        const footballProducts = await Product.aggregate([
+            { $match: { category: 'football' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedfootball= footballProducts.map(item => item.product);
+
+        const basketballProducts = await Product.aggregate([
+            { $match: { category: 'basketball' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedbasketball= basketballProducts.map(item => item.product);
+
+        const boxingProducts = await Product.aggregate([
+            { $match: { category: 'boxing' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedboxing= boxingProducts.map(item => item.product);
+
+        const tabletennisProducts = await Product.aggregate([
+            { $match: { category: 'tabletennis' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedtt= tabletennisProducts.map(item => item.product);
+
+        const badmintonProducts = await Product.aggregate([
+            { $match: { category: 'badminton' } },
+            { $group: { _id: "$type", product: { $first: "$$ROOT" } } }
+        ]);
+        const simplifiedbadminton= badmintonProducts.map(item => item.product);
+
+        res.render('homepage', { cricketProducts:simplifiedCricketProducts, footballProducts:simplifiedfootball, basketballProducts:simplifiedbasketball, boxingProducts:simplifiedboxing, tabletennisProducts:simplifiedtt, badmintonProducts:simplifiedbadminton});
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
@@ -264,7 +329,7 @@ async function seedDatabase() {
     try {
         await seedCricketProducts();
         await seedFootballProducts();
-        await seedbasketBallProducts();
+        await seedbasketballProducts();
         await seedboxingProducts();
         await seedtabletennisProducts();
         await seedbadmintonProducts();

@@ -26,11 +26,11 @@ const ProductSchema = new mongoose.Schema({
     price: { type: Number, required: true },
     category: String,
     description: String,
+    type: String,
+    gender: { type: String},
     stock: { type: Number, default: 0 },
     image: String,
-    brand: String,
-    ratings: { type: Number, default: 0 },
-    inStock: { type: Boolean, default: true }
+    brand: {type: String, index: true},
     },{ timestamps: true });
 
 const CartItemSchema = new mongoose.Schema({

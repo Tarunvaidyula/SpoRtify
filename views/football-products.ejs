@@ -39,10 +39,10 @@
         <% if (footballProducts && footballProducts.length > 0) { %>
             <% footballProducts.forEach(product => { %>
                 <div class="product-box">
-                    <img src="<%= product.imageUrl %>" alt="<%= product.name %>">
+                    <img src="<%= product.image %>" alt="<%= product.name %>">
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
-                    <span class="price">$<%= product.price %></span>
+                    <span class="price">Rs.<%= product.price %></span>
                     <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                 </div>
             <% }); %>
