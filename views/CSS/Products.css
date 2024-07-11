@@ -4,6 +4,7 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 #popular-product {
   margin: 80px auto;
@@ -13,7 +14,8 @@ body {
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 30px;
   align-items: center;
-  margin: 50px 0px;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 .product-box img {
   width: 90%;
@@ -52,6 +54,7 @@ body {
   font-weight: 600;
   font-size: 1.4rem;
   color: chocolate;
+  margin-left:10px;
 }
 .product-box .add-to-cart {
   width: 100%;

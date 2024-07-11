@@ -10,31 +10,30 @@
 </head>
 <body>
     <header>
-    <div class="header-content">
-               <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
-            </div><br>
-            <div class="search-bar">
-                <input type="text" placeholder="search">
-                <button type="submit"><img src="images/search.jpg" alt="search"></button>
-            </div><br>
-            <% if (isAuthenticated) {%>
-                <div class="welcome-message">
-                <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
-                </div>
-                <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
-            <% } else { %>
-                <a href="login" style="color: white">
-                    <button class="profile-button">
-                      <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
-                    </button>
-                    </a>
-            <%}%><a href="cart" style="color: white">
-                <button class="cart-button">
-                  <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+        <div class="header-content">
+            <a href="homepage"><img src="images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
+        <div class="search-bar">
+            <input type="text" placeholder="search">
+            <button type="submit"><img src="images/search.jpg" alt="search"></button>
+        </div><br>
+        <% if (isAuthenticated) {%>
+            <div class="welcome-message">
+            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
+            </div>
+            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
+        <% } else { %>
+            <a href="login" style="color: white">
+                <button class="profile-button">
+                  <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
                 </button>
               </a>
-    </div>
-        </header><br><br><br><br>
+        <%}%><a href="cart" style="color: white">
+            <button class="cart-button">
+              <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+            </button>
+          </a>
+</div>
+    </header><br><br><br><br>
 
     <h1>Cricket Products</h1>
     <div class="product-container">
@@ -88,26 +87,6 @@
             <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
         </div>
     </footer>
-    <script>
-        document.querySelectorAll('.add-to-cart').forEach(button => {
-            button.addEventListener('click', async () => {
-                const productId = button.getAttribute('data-id');
-                try {
-                    const response = await fetch('/cart/add', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json'
-                        },
-                        body: JSON.stringify({ productId, quantity: 1 })
-                    });
-                    const result = await response.json();
-                    alert(result.message);
-                } catch (error) {
-                    console.error('Error adding product to cart:', error);
-                    alert('Error adding product to cart');
-                }
-            });
-        });
-    </script>
+    <script src="js/product.js"></script>
 </body>
 </html>

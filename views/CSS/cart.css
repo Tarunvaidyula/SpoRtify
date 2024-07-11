@@ -10,41 +10,6 @@ body {
   overflow-x: hidden;
 }
 
-.navigation {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  padding: 0;
-  background-color: black;
-  width: 100%;
-  margin-bottom: 50px;
-}
-
-.navigation li {
-  position: relative;
-}
-
-.navigation li ul {
-  display: none;
-  position: absolute;
-  background-color: black;
-}
-
-.navigation li:hover ul {
-  display: block;
-}
-
-.navigation li a {
-  display: block;
-  padding: 10px;
-  text-decoration: none;
-  color: white;
-  font-style: italic;
-}
-
-.navigation a:hover {
-  text-decoration: underline;
-}
 .quantity-controls {
   display: flex;
   align-items: center;
@@ -84,6 +49,8 @@ body {
   height: 200px;
   overflow: hidden;
   margin-bottom: 20px;
+  margin-left : 20px;
+  margin-right: 40px;
 }
 .product:hover {
   border: none;

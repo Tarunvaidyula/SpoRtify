@@ -7,9 +7,9 @@
 body{
   margin: 0;
   padding: 0;
-  background-color: black;
+  background-color:black;
   background-size: cover;
-  background-size: 50% 50%;
+  overflow-x: hidden;
 }
 
 .explore{
@@ -39,6 +39,7 @@ body{
   background-color: black;
   width: 100%;
   margin-bottom: 40px;
+  margin-left:20px;
 }
 
 .navbar li {
@@ -120,6 +121,16 @@ body{
   width: 70px;
   height: auto; 
   margin-right: 20px;
+}
+
+.deal-container{
+  align-items: center;
+  margin-left:60px;
+  margin-right:60px;
+  border: 1px solid white;
+}
+.productdeal{
+  align-items: center;
 }
 
 .product-container1 {

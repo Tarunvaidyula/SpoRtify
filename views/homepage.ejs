@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="device-width, initial-scale=1.0">
-    <title>Home - F1 Store</title>
+    <title>SpoRtify</title>
     <link rel="stylesheet" type="text/css" href="css/homepage.css">
     <link rel="stylesheet" href="css/headfo.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
 </head>
 <body>
     <header>
         <div class="header-content">
-           <a href="homepage"><img src="images/logo.jpg" alt="F1 Store Logo" width="250" height="100"></a>
-        </div><br>
+            <a href="homepage"><img src="images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
         <div class="search-bar">
             <input type="text" placeholder="search">
             <button type="submit"><img src="images/search.jpg" alt="search"></button>
@@ -39,22 +39,22 @@
     <nav>
         <ul class="navbar">
             <b>
-            <li><a href="">Shop By Products</a>
+            <li><a href="">Sports wear</a>
                 <ul class="dropdown" style="display: none;">
-                    <li><a href="football-products">football</a></li>
-                    <li><a href="cricket-products">cricket</a></li>
-                    <li><a href="boxing-products">Boxing</a></li>
-                    <li><a href="basketBall-products">Basketball</a></li>
+                    <li><a href="football-products">Jerseys</a></li>
+                    <li><a href="cricket-products">Tracks</a></li>
+                    <li><a href="boxing-products">Bands/<br>Sleeves</a></li>
+                    <li><a href="basketBall-products">Goggles/<br>Sports Glasses</a></li>
                 </ul>
             </li>
             <li><a href="">Shop By Sport</a>
                 <ul class="dropdown2" style="display: none;">
-                    <li><a href="">Alexander Albon</a></li>
-                    <li><a href="">Carlos Sainz</a></li>
-                    <li><a href="">Charles Leclerc</a></li>
-                    <li><a href="">Daniel Ricciardo</a></li>
-                    <li><a href="">Esteban Ocan</a></li>
-                    <li><a href="">Fernando Alonso</a></li>
+                    <li><a href="football-products">football</a></li>
+                    <li><a href="cricket-products">cricket</a></li>
+                    <li><a href="boxing-products">Boxing</a></li>
+                    <li><a href="basketBall-products">Basketball</a></li>
+                    <li><a href="tabletennis-products">Table-tennis</a></li>
+                    <li><a href="badminton-products">Badminton</a></li>
                 </ul>
             </li>
             <li><a href="">Men</a></li>
@@ -64,7 +64,7 @@
                 <ul class="dropdown4" style="display: none;">
                     <li><a href="">Jerseys</a></li>
                     <li><a href="">Tracks</a></li>
-                    <li><a href="">Backpacks & Bags</a></li>
+                    <li><a href="">Kit Bags</a></li>
                     <li><a href="">Shoes</a></li>
                     <li><a href="">Gloves & Guards</a></li>
                 </ul>
@@ -103,8 +103,8 @@
             </ul>
         </div>
     </center>
-<div class="container">
-        <div id="productDeal">
+<div class="deal-container">
+        <div id="productdeal">
             <a href=""><img class="product-image" src="images/best2.jpeg" alt="best2"></a>
             <a href=""><img class="product-image" src="images/best3.jpeg" alt="best3"></a>
             <a href=""><img class="product-image" src="images/best1.jpeg" alt="best1"></a>
@@ -166,7 +166,7 @@
                     <strong><%= product.name %></strong>
                     <span class="description"><%= product.description %></span>
                     <span class="price">$<%= product.price %></span>
-                    <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
+                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                 </div>
             <% }); %>
         <% } else { %>
@@ -210,6 +210,7 @@
 </section>
 <div class="sport-kit">
     <div class="kit">
+        <a href="#" onclick="openModal('cricket')">
         <img src="" alt="Men" data-product-id="cricket">
             <h3>Cricket Kit</h3>
         </a>
