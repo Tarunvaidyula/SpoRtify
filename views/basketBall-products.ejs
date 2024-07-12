@@ -1,42 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>basketball Products</title>
-    <link rel="stylesheet" href="/CSS/products.css">
-    <link rel="stylesheet" href="/CSS/headfo.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
-</head>
-<body>
-    <header>
-        <div class="header-content">
-            <a href="homepage"><img src="images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
-            <div class="search-bar">
-                <form action="/search" method="GET" class="search-form">
-                    <input type="text" name="query" placeholder="Search by product or brand">
-                    <button type="submit" class="search-button"><i class="fa-fa-search"></i></button>
-                </form>
-            </div><br>
-        <% if (isAuthenticated) {%>
-            <div class="welcome-message">
-            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
-            </div>
-            <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
-        <% } else { %>
-            <a href="login" style="color: white">
-                <button class="profile-button">
-                  <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
-                </button>
-              </a>
-        <%}%><a href="cart" style="color: white">
-            <button class="cart-button">
-              <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
-            </button>
-          </a>
-</div>
-    </header>
-<br><br><br><br>
+<main>
+    <%- include('partials/header.ejs') %>
     <div class="product-container">
         <% if (basketballProducts && basketballProducts.length > 0) { %>
             <% basketballProducts.forEach(product => { %>
@@ -51,43 +14,6 @@
         <% } else { %>
             <p>No basketball products available.</p>
         <% } %>
-    </div><br><br><br><br>
-    <footer class="footer">
-        <div class="footer-content">
-            <div class="column">
-            </div>
-            <div class="column">
-                <h3>Account</h3>
-                <ul>
-                    <% if (isAuthenticated) {%>
-                        <a href="logout" style="color: white">
-                           Logout </a><br><br>
-                    <% } else { %>
-                        <a href="login" style="color: white">
-                            Login
-                            </a><br><br>
-                            <a href="signup" style="color: white">
-                            Sign Up
-                          </a><br><br>
-                    <%}%>
-                    <li><a href="profile">Profile</a></li>
-                </ul>
-            </div>
-            <div class="column">
-                <h3>Contact Us</h3>
-                <p style="color: white;">Email: @gmail.com</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <ul class="social-media">
-                <li><b>Follow Us: </b></li>
-                    <li><a href="#" class="icon"><i class="fab fa-facebook-f" style="font-size:30px"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fab fa-twitter" style="font-size:30px"></i></a></li>
-                    <li><a href="#" class="icon"><i class="fab fa-instagram" style="font-size:30px"></i></a></li>
-            </ul>
-            <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
-        </div>
-    </footer>
-    <script src="/js/products.js"></script>
-</body>
-</html>
+    </div>
+</main>
+        <%- include('partials/footer.ejs') %>

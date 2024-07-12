@@ -4,11 +4,12 @@ import { Product } from "./models/database.mjs";
 dotenv.config();
 
 const router=express.Router();
+const category= Product.distinct('category');
 
 router.get('/football-products', async (req, res) => {
     try {
         const footballProducts = await Product.find({ category: 'football' });
-        res.render('football-products', { footballProducts });
+        res.render('football-products', { footballProducts});
     } catch (error) {
         console.error('Error fetching football products:', error);
         res.status(500).send('Error fetching football products');
