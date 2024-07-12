@@ -14,8 +14,10 @@
         <div class="header-content">
             <a href="homepage"><img src="images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
         <div class="search-bar">
-            <input type="text" placeholder="search">
-            <button type="submit"><img src="images/search.jpg" alt="search"></button>
+            <form action="/search" method="GET">
+                <input type="text" name="query" placeholder="Search by product or brand">
+                <button type="submit"><img src="images/search.jpg" alt="search"></button>
+            </form>
         </div><br>
         <% if (isAuthenticated) {%>
             <div class="welcome-message">
@@ -57,22 +59,19 @@
                     <li><a href="badminton-products">Badminton</a></li>
                 </ul>
             </li>
-            <li><a href="">Men</a></li>
-            <li><a href="">Women</a></li> 
-            <li><a href="">Kids</a></li>
+            <li><a href="">Bat</a></li>
+            <li><a href="">Ball</a></li> 
             <li><a href="">Accessories</a>
                 <ul class="dropdown4" style="display: none;">
-                    <li><a href="">Jerseys</a></li>
-                    <li><a href="">Tracks</a></li>
                     <li><a href="">Kit Bags</a></li>
                     <li><a href="">Shoes</a></li>
                     <li><a href="">Gloves & Guards</a></li>
                 </ul>
             <li><a href="">Headwear</a>
             <ul class="dropdown3" style="display: none;">
-                <li><a href="">Men</a></li>
-                <li><a href="">Women</a></li>
-                <li><a href="">Kids</a></li>
+                <li><a href="">Caps</a></li>
+                <li><a href="">Helmets</a></li>
+                <li><a href=""> Headbands</a></li>
         </ul>
     </b>
         </li>
@@ -88,9 +87,9 @@
                 <li class="product-item">
                     <a href="/products-by-brand/Nike"><img src="https://gifdb.com/images/high/nike-text-logo-animation-8hztheflutey4ag5.gif" alt="Nike" width="100"></a></li>
                 <li class="product-item">
-                    <a href="/products-by-brand/Adidas"><img src="https://i.pinimg.com/originals/e8/5d/22/e85d22b3e4d48944de66184b61a95435.gif" alt="Adidas" width="100"></a></li>
+                    <a href="/products-by-brand/Adidas"><img src="https://i.pinimg.com/originals/e8/5d/22/e85d22b3e4d48944de66184b61a95435.gif" alt="Adidas" height"100" width="100"></a></li>
                 <li class="product-item">
-                    <a href="/products-by-brand/Decathlon"><img src="https://media3.giphy.com/media/hXMP0cHxx82GRq6nQX/200w.gif?cid=82a1493btt79htumni9r7ehpmpl9qssw7oig84e3bt1yo342&ep=v1_gifs_related&rid=200w.gif&ct=g" alt="Decathlon" width="100"></a></li>
+                    <a href="/products-by-brand/Butterfly"><img src="https://www.butterfly-global.com/en/assets/images/about/mv-sp.gif" alt="Butterfly" width="100"></a>
                 </li>
                 <li class="product-item">
                     <a href="/products-by-brand/Puma"><img src="https://i.pinimg.com/originals/cb/9d/1a/cb9d1a912e857068caf2fe481f858d80.gif" alt="Puma" width="100"></a></li>
@@ -98,7 +97,10 @@
                 <li class="product-item">
                     <a href="/products-by-brand/Reebok"><img src="https://i.pinimg.com/originals/23/eb/e7/23ebe7caf5997ac2fc985eceb7b99c32.gif" alt="Reebok" width="100"></a></li>
                 <li class="product-item">
-                    <a href="/products-by-brand/Fila"><img src="https://cdn.dribbble.com/users/1161517/screenshots/7463720/fila_logo.gif" alt="Fila" width="50" height="50"></a>
+                    <a href="/products-by-brand/Yonex"><img src="https://media.giphy.com/avatars/Yonex_Badminton/ahQJaNDqz22x.jpg" alt="Yonex" width="50" height="50"></a>
+                </li>
+                <li class="product-item">
+                    <a href="/products-by-brand/Everlast"><img src="https://freight.cargo.site/w/1200/i/12dadf93f97ee9ec22144c247d04607f4827c140df79962a0bf69770f3a82f11/Untitled-10.gif" alt="Everlast" width="100"></a>
                 </li>
             </ul>
         </div>
@@ -162,10 +164,10 @@
         <% if (cricketProducts && cricketProducts.length > 0) { %>
             <% cricketProducts.forEach(product => { %>
                 <div class="product-box">
-                    <img src="<%= product.image %>" alt="<%= product.name %>">
-                    <strong><%= product.name %></strong>
+                    <img src="<%= product.image %>" alt="<%= product.name %>"><br><br>
+                    <strong><%= product.name %></strong><br><br>
                     <span class="description"><%= product.description %></span>
-                    <span class="price">$<%= product.price %></span>
+                    <span class="price">Rs. <%= product.price %></span>
                     <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                 </div>
             <% }); %>
@@ -178,10 +180,10 @@
             <% if (footballProducts && footballProducts.length > 0) { %>
                 <% footballProducts.forEach(product => { %>
                     <div class="product-box">
-                        <img src="<%= product.image %>" alt="<%= product.name %>">
-                        <strong><%= product.name %></strong>
+                        <img src="<%= product.image %>" alt="<%= product.name %>"><br><br>
+                        <strong><%= product.name %></strong><br><br>
                         <span class="description"><%= product.description %></span>
-                        <span class="price">$<%= product.price %></span>
+                        <span class="price">Rs. <%= product.price %></span>
                         <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                     </div>
                 <% }); %>
@@ -196,9 +198,9 @@
                 <% basketballProducts.forEach(product => { %>
                     <div class="product-box">
                         <img src="<%= product.image %>" alt="<%= product.name %>">
-                        <strong><%= product.name %></strong>
+                        <strong><%= product.name %></strong><br><br>
                         <span class="description"><%= product.description %></span>
-                        <span class="price">$<%= product.price %></span>
+                        <span class="price">Rs. <%= product.price %></span>
                         <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
                     </div>
                 <% }); %>
@@ -207,7 +209,7 @@
             <% } %>
         </div>
     </div>
-    <h2>Kits For You</h2>
+    <h2>Champions Choice</h2>
 </section>
 <div class="sport-kit">
     <div class="kit">

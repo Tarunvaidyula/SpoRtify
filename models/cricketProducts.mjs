@@ -405,6 +405,150 @@ export const cricketProducts = [
         brand: 'Puma',
         type: 'Umpire Hat',
         image: 'https://example.com/puma-cricket-umpire-hat.jpg'
+    },
+    {
+        name: 'Reebok Cricket Bat',
+        description: 'High-performance cricket bat for professional players.',
+        price: 13499,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Bat',
+        image: 'https://example.com/reebok-cricket-bat.jpg'
+    },
+    {
+        name: 'Reebok Cricket Gloves',
+        description: 'Comfortable and durable cricket gloves.',
+        price: 3499,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Gloves',
+        image: 'https://example.com/reebok-cricket-gloves.jpg'
+    },
+    {
+        name: 'Reebok Cricket Ball',
+        description: 'High-quality cricket ball for match play.',
+        price: 2799,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Ball',
+        image: 'https://example.com/reebok-cricket-ball.jpg'
+    },
+    {
+        name: 'Reebok Cricket Helmet',
+        description: 'Protective helmet with excellent comfort.',
+        price: 4999,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Helmet',
+        image: 'https://example.com/reebok-cricket-helmet.jpg'
+    },
+    {
+        name: 'Reebok Cricket Pads',
+        description: 'Lightweight and protective cricket pads.',
+        price: 3999,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Pads',
+        image: 'https://example.com/reebok-cricket-pads.jpg'
+    },
+    {
+        name: 'Reebok Cricket Kit Bag',
+        description: 'Spacious and durable cricket kit bag.',
+        price: 6499,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Kit Bag',
+        image: 'https://example.com/reebok-cricket-kit-bag.jpg'
+    },
+    {
+        name: 'Reebok Cricket Shoes',
+        description: 'High-performance cricket shoes for enhanced agility.',
+        price: 5499,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Shoes',
+        image: 'https://example.com/reebok-cricket-shoes.jpg'
+    },
+    {
+        name: 'Reebok Cricket Thigh Guard',
+        description: 'Thigh guard for optimal protection.',
+        price: 1799,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Thigh Guard',
+        image: 'https://example.com/reebok-cricket-thigh-guard.jpg'
+    },
+    {
+        name: 'Reebok Cricket Arm Guard',
+        description: 'Arm guard for added protection while batting.',
+        price: 1399,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Arm Guard',
+        image: 'https://example.com/reebok-cricket-arm-guard.jpg'
+    },
+    {
+        name: 'Reebok Cricket Cap',
+        description: 'Stylish cap for cricket players.',
+        price: 999,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Cap',
+        image: 'https://example.com/reebok-cricket-cap.jpg'
+    },
+    {
+        name: 'Reebok Cricket Wicket Keeping Gloves',
+        description: 'Gloves designed for wicket keepers.',
+        price: 2699,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Wicket Keeping Gloves',
+        image: 'https://example.com/reebok-cricket-wicket-keeping-gloves.jpg'
+    },
+    {
+        name: 'Reebok Cricket Bat Grip',
+        description: 'Cricket bat grip for improved handling.',
+        price: 699,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Bat Grip',
+        image: 'https://example.com/reebok-cricket-bat-grip.jpg'
+    },
+    {
+        name: 'Reebok Cricket Thigh Pad',
+        description: 'Protective thigh pad for batting.',
+        price: 899,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Thigh Pad',
+        image: 'https://example.com/reebok-cricket-thigh-pad.jpg'
+    },
+    {
+        name: 'Reebok Cricket Stumps',
+        description: 'Durable cricket stumps for practice and matches.',
+        price: 1399,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Stumps',
+        image: 'https://example.com/reebok-cricket-stumps.jpg'
+    },
+    {
+        name: 'Reebok Cricket Elbow Guard',
+        description: 'Elbow guard for enhanced protection.',
+        price: 1299,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Elbow Guard',
+        image: 'https://example.com/reebok-cricket-elbow-guard.jpg'
+    },
+    {
+        name: 'Reebok Cricket Batting Gloves',
+        description: 'High-quality batting gloves for comfort and grip.',
+        price: 2199,
+        category: 'cricket',
+        brand: 'Reebok',
+        type: 'Batting Gloves',
+        image: 'https://example.com/reebok-cricket-batting-gloves.jpg'
     }
 ];
 

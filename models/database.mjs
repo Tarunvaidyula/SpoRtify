@@ -32,6 +32,7 @@ const ProductSchema = new mongoose.Schema({
     image: String,
     brand: {type: String, index: true},
     },{ timestamps: true });
+ProductSchema.index({ name: 'text', brand: 'text' });
 
 const CartItemSchema = new mongoose.Schema({
     productId: { type: mongoose.Schema.Types.ObjectId, ref: 'Product', required: true },

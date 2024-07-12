@@ -49,7 +49,6 @@ app.use((req, res, next) => {
     next();
 });
 
-// Routes
 app.get('/', async (req, res) => {
     try {
         const cricketProducts = await Product.aggregate([
@@ -92,6 +91,22 @@ app.get('/', async (req, res) => {
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');
+    }
+});
+app.get('/search', async (req, res) => {
+    const { query } = req.query;
+    try {
+        const products = await Product.find({
+            $or: [
+                { name: { $regex: query, $options: 'i' } },
+                { brand: { $regex: query, $options: 'i' } },
+                { $text: { $search: query } }
+            ]
+        });
+        res.render('search', { products, query });
+    } catch (error) {
+        console.error('Error searching products:', error);
+        res.status(500).send('Error searching products');
     }
 });
 
