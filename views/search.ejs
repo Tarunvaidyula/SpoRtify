@@ -11,10 +11,12 @@
     <header>
         <div class="header-content">
             <a href="homepage"><img src="images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
-        <div class="search-bar">
-            <input type="text" placeholder="search">
-            <button type="submit"><img src="images/search.jpg" alt="search"></button>
-        </div><br>
+            <div class="search-bar">
+                <form action="/search" method="GET" class="search-form">
+                    <input type="text" name="query" placeholder="Search by product or brand">
+                    <button type="submit" class="search-button"><i class="fa-fa-search"></i></button>
+                </form>
+            </div><br>
         <% if (isAuthenticated) {%>
             <div class="welcome-message">
             <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
