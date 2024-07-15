@@ -20,24 +20,43 @@ router.get('/cart', async (req, res) => {
         }
     } else {
         const sessionCart = req.session.cart || [];
-        const products = await Product.find({ '_id': { $in: sessionCart.map(item => item.productId) } });
-
-        cart = {
-            items: sessionCart.map(item => ({
-                productId: products.find(p => p._id.equals(item.productId)),
-                quantity: item.quantity
-            }))
-        };
+        const productIds = sessionCart.map(item => item.productId);
+        
+        try {
+            const products = await Product.find({ _id: { $in: productIds } });
+            
+            cart = {
+                items: sessionCart.map(item => {
+                    const product = products.find(p => p._id.equals(item.productId));
+                    return {
+                        productId: product,
+                        quantity: item.quantity
+                    };
+                })
+            };
+        } catch (error) {
+            console.error('Error fetching products for session cart:', error);
+            return res.status(500).send('Error fetching products for session cart');
+        }
     }
+
     let totalItems = 0;
     let totalAmount = 0;
     if (cart && cart.items.length > 0) {
         totalItems = cart.items.reduce((sum, item) => sum + item.quantity, 0);
-        totalAmount = cart.items.reduce((sum, item) => sum + item.quantity * item.productId.price, 0);
+        totalAmount = cart.items.reduce((sum, item) => {
+            if (item.productId) { // Ensure productId is not null before accessing price
+                return sum + item.quantity * item.productId.price;
+            } else {
+                console.warn(`Product ID ${item.productId} is missing or invalid`);
+                return sum;
+            }
+        }, 0);
     }
 
     res.render('cart', { cart, totalItems, totalAmount });
 });
+
 
 router.post('/cart/add', async (req, res) => {
     const { productId, quantity } = req.body;

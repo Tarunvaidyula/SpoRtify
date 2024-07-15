@@ -6,6 +6,8 @@ import passport from 'passport';
 import twilio from 'twilio';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import checkoutNodeJssdk from '@paypal/checkout-server-sdk';
+import paypalClient from './paypal.mjs';
 import { User, Product, Cart, Order } from './models/database.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
@@ -46,9 +48,9 @@ app.use(express.static('public'));
 // middleware for authentication views
 app.use((req, res, next) => {
     res.locals.isAuthenticated = req.isAuthenticated();
+    res.locals.user = req.user;
     next();
 });
-
 app.get('/', async (req, res) => {
     try {
         const cricketProducts = await Product.aggregate([
@@ -129,8 +131,8 @@ app.get('/checkout', ensureAuthenticated, (req, res) => {
 app.get('/pay',ensureAuthenticated, async (req, res) => {
     res.render('pay');
 });
-app.get('/confirmation',ensureAuthenticated, async (req, res) => {
-    res.render('confirmation');
+app.get('/confirmation', ensureAuthenticated, (req, res) => {
+    res.render('confirmation', { message: 'Your payment was successful!' });
 });
 app.get('/products-by-brand/:brandName', async (req, res) => {
     res.render('productsByBrand');
@@ -258,24 +260,29 @@ app.get('/checkout', ensureAuthenticated, async (req, res) => {
 });
 
 app.post('/checkout', ensureAuthenticated, async (req, res) => {
-    if ( req.session.cart.length === 0){
-        return res.redirect('/cart');
-    }
     try {
         const userId = req.user._id;
         const { name, address, email, locality, pincode, phone } = req.body;
 
+        // Fetch cart for the authenticated user
         const cart = await Cart.findOne({ userId }).populate('items.productId');
+        
+        // Check if cart is empty
         if (!cart || cart.items.length === 0) {
             return res.redirect('/cart');
         }
 
+        // Construct order items
         const orderItems = cart.items.map(item => ({
             productId: item.productId._id,
             quantity: item.quantity,
             price: item.productId.price
         }));
 
+        // Calculate total amount
+        const totalAmount = orderItems.reduce((sum, item) => sum + item.quantity * item.price, 0);
+
+        // Create new order instance
         const order = new Order({
             userId,
             items: orderItems,
@@ -285,13 +292,17 @@ app.post('/checkout', ensureAuthenticated, async (req, res) => {
             locality,
             pincode,
             phone,
-            totalAmount: orderItems.reduce((sum, item) => sum + item.quantity * item.price, 0)
+            totalAmount
         });
 
+        // Save order to database
         await order.save();
+
+        // Delete cart after successful checkout
         await Cart.findOneAndDelete({ userId });
 
-        res.redirect('/pay');
+        // Redirect to payment or confirmation page
+        res.redirect('/pay'); // or '/confirmation' as appropriate
     } catch (error) {
         console.error('Error during checkout:', error);
         res.status(500).send('Error during checkout');
@@ -327,6 +338,50 @@ app.post('/pay', ensureAuthenticated, async (req, res) => {
         res.status(500).json({ message: 'Error saving card number and sending SMS' });
     }
 });
+
+app.post('/create-order', ensureAuthenticated, async (req, res) => {
+    const { totalAmount } = req.body;
+  
+    try {
+      const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
+      request.prefer("return=representation");
+      request.requestBody({
+        intent: 'CAPTURE',
+        purchase_units: [{
+          amount: {
+            currency_code: 'INR',
+            value: totalAmount
+          }
+        }]
+      });
+  
+      const order = await paypalClient.client().execute(request);
+      res.status(201).json({
+        id: order.result.id
+      });
+    } catch (err) {
+      console.error('Error creating PayPal order:', err);
+      res.status(500).send('Error creating PayPal order');
+    }
+  });
+  
+  // Route for capturing a PayPal order
+  app.post('/capture-order', ensureAuthenticated, async (req, res) => {
+    const { orderId } = req.body;
+  
+    try {
+      const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
+      request.requestBody({});
+  
+      const capture = await paypalClient.client().execute(request);
+      res.status(200).json({
+        status: capture.result.status
+      });
+    } catch (err) {
+      console.error('Error capturing PayPal order:', err);
+      res.status(500).send('Error capturing PayPal order');
+    }
+  });
 
 // Error handling
 app.use((err, req, res, next) => {

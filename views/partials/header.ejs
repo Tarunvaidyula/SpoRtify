@@ -19,9 +19,6 @@
                 </form>
             </div><br>
         <% if (isAuthenticated) {%>
-            <div class="welcome-message">
-            <div class= "marquee"><span><b><i>Welcome <%= user.name %> !</i></b></span></div>
-            </div>
             <a href="logout" style="color: white"><button class="profile-button"><br>Logout</a></button>
         <% } else { %>
             <a href="login" style="color: white">
