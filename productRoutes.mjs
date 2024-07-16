@@ -8,7 +8,21 @@ const category= Product.distinct('category');
 
 router.get('/football-products', async (req, res) => {
     try {
-        const footballProducts = await Product.find({ category: 'football' });
+        let filter = { category: 'football' };
+
+        // Apply filters if provided in query params
+        if (req.query.brand) {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+        if (req.query.type) {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+        if (req.query.priceRange) {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+
+        const footballProducts = await Product.find(filter);
         res.render('football-products', { footballProducts});
     } catch (error) {
         console.error('Error fetching football products:', error);

@@ -1,5 +1,36 @@
     <%- include('partials/header.ejs') %>
         <main class="product-content">
+            <form id="filter-form">
+                <!-- Brand Filters -->
+                <fieldset>
+                    <legend>Brands:</legend>
+                    <label><input type="checkbox" name="brand" value="Nike"> Nike</label>
+                    <label><input type="checkbox" name="brand" value="Adidas"> Adidas</label>
+                    <label><input type="checkbox" name="brand" value="Puma"> Puma</label>
+                    <!-- Add more brands as needed -->
+                </fieldset>
+        
+                <!-- Type Filters -->
+                <fieldset>
+                    <legend>Types:</legend>
+                    <label><input type="checkbox" name="type" value="Football"> Football</label>
+                    <label><input type="checkbox" name="type" value="Goalkeeper Gloves"> Goalkeeper Gloves</label>
+                    <!-- Add more types as needed -->
+                </fieldset>
+        
+                <!-- Price Range Filter -->
+                <fieldset>
+                    <legend>Price Range:</legend>
+                    <label><input type="radio" name="priceRange" value="0-1000"> Rs.0 - Rs.1000</label><br>
+                    <label><input type="radio" name="priceRange" value="1001-3000"> Rs.1001 - Rs.3000</label><br>
+                    <label><input type="radio" name="priceRange" value="3001-5000"> Rs.3001 - Rs.5000</label><br>
+                    <!-- Add more price ranges as needed -->
+                </fieldset>
+        
+                <button type="submit">Apply Filters</button>
+            </form>
+<div class="product-container"></div>
+
             <h1>Football Products</h1>
 
     <div class="product-container">
@@ -19,4 +50,3 @@
     </div>
     </main>
     <%- include('./partials/footer.ejs') %>
-

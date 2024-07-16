@@ -5,9 +5,10 @@ import session from 'express-session';
 import passport from 'passport';
 import twilio from 'twilio';
 import path from 'path';
+import bodyparser from 'body-parser';
 import { fileURLToPath } from 'url';
-import checkoutNodeJssdk from '@paypal/checkout-server-sdk';
-import paypalClient from './paypal.mjs';
+import paypal from '@paypal/checkout-server-sdk';
+import paypalClient from './paypalClient.mjs';
 import { User, Product, Cart, Order } from './models/database.mjs';
 import { seedCricketProducts } from './models/cricketProducts.mjs';
 import { seedFootballProducts } from './models/footballProducts.mjs';
@@ -23,10 +24,11 @@ dotenv.config();
 
 const port = process.env.PORT || 3000;
 const app = express();
-const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // Middleware
 app.use(express.json());
+app.use(bodyparser.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -309,84 +311,43 @@ app.post('/checkout', ensureAuthenticated, async (req, res) => {
     }
 });
 
-app.post('/pay', ensureAuthenticated, async (req, res) => {
-    const { cardNumber } = req.body;
-    const userId = req.user._id;
+app.post('/create-order', ensureAuthenticated, async (req, res) => {
+    const { totalAmount } = req.body;
+
+    const request = new paypal.orders.OrdersCreateRequest();
+    request.prefer("return=representation");
+    request.requestBody({
+        intent: 'CAPTURE',
+        purchase_units: [{
+            amount: {
+                currency_code: 'USD',
+                value: totalAmount
+            }
+        }]
+    });
 
     try {
-        // Update user document with cardNumber
-        await User.findByIdAndUpdate(userId, { cardNumber });
-
-        // Fetch user details to send SMS
-        const user = await User.findById(userId);
-        if (!user) {
-            return res.status(404).json({ message: 'User not found' });
-        }
-
-        // Send SMS confirmation
-        const message = `Dear ${user.name}, your order has been placed successfully`;
-        await client.messages.create({
-            body: message,
-            from: process.env.TWILIO_PHONE_NUMBER,
-            to: user.phnum
-        });
-
-        // Redirect to confirmation page after successful update and SMS
-        res.redirect('/confirmation');
-    } catch (error) {
-        console.error('Error saving card number and sending SMS:', error);
-        res.status(500).json({ message: 'Error saving card number and sending SMS' });
+        const order = await paypalClient.client().execute(request);
+        res.status(201).json({ id: order.result.id });
+    } catch (err) {
+        console.error('Error creating PayPal order:', err);
+        res.status(500).send('Error creating PayPal order');
     }
 });
 
-app.post('/create-order', ensureAuthenticated, async (req, res) => {
-    const { totalAmount } = req.body;
-  
-    try {
-      const request = new checkoutNodeJssdk.orders.OrdersCreateRequest();
-      request.prefer("return=representation");
-      request.requestBody({
-        intent: 'CAPTURE',
-        purchase_units: [{
-          amount: {
-            currency_code: 'INR',
-            value: totalAmount
-          }
-        }]
-      });
-  
-      const order = await paypalClient.client().execute(request);
-      res.status(201).json({
-        id: order.result.id
-      });
-    } catch (err) {
-      console.error('Error creating PayPal order:', err);
-      res.status(500).send('Error creating PayPal order');
-    }
-  });
-  
-  // Route for capturing a PayPal order
-  app.post('/capture-order', ensureAuthenticated, async (req, res) => {
+app.post('/capture-order', ensureAuthenticated, async (req, res) => {
     const { orderId } = req.body;
-  
-    try {
-      const request = new checkoutNodeJssdk.orders.OrdersCaptureRequest(orderId);
-      request.requestBody({});
-  
-      const capture = await paypalClient.client().execute(request);
-      res.status(200).json({
-        status: capture.result.status
-      });
-    } catch (err) {
-      console.error('Error capturing PayPal order:', err);
-      res.status(500).send('Error capturing PayPal order');
-    }
-  });
 
-// Error handling
-app.use((err, req, res, next) => {
-    console.error(err.stack);
-    res.status(500).send('Something went wrong!');
+    const request = new paypal.orders.OrdersCaptureRequest(orderId);
+    request.requestBody({});
+
+    try {
+        const capture = await paypalClient.client().execute(request);
+        res.status(200).json(capture.result);
+    } catch (err) {
+        console.error('Error capturing PayPal order:', err);
+        res.status(500).send('Error capturing PayPal order');
+    }
 });
 
 // Start server
@@ -409,3 +370,4 @@ async function seedDatabase() {
     }
 }
 seedDatabase();
+
