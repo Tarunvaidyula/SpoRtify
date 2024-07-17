@@ -90,6 +90,15 @@ export const tabletennisProducts = [
         brand: 'Butterfly',
         type: 'Bag',
         image: 'https://example.com/butterfly-table-tennis-bag.jpg'
+    },
+    {
+        name: 'Table tennis Kit',
+        description: 'Table tennis kit for beginners and intermediate players.',
+        price: 9999,
+        category: 'tabletennis',
+        brand: 'Generic',
+        type: 'Kit bag',
+        image: 'https://example.com/table-tennis-kit.jpg' 
     }
 ];
 

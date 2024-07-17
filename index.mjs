@@ -139,6 +139,10 @@ app.get('/confirmation', ensureAuthenticated, (req, res) => {
 app.get('/products-by-brand/:brandName', async (req, res) => {
     res.render('productsByBrand');
 });
+app.get('/navproducts/:type', async (req, res) => {
+    res.render('navproducts');
+});
+
 
 app.get('/homepage',ensureAuthenticated, async (req, res) => {
     try {
@@ -242,6 +246,17 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
     });
   });
 
+  app.post('/profile', ensureAuthenticated, async (req, res) => {
+    const userId = req.user._id;
+    const { name, email, password, gender, phnum } = req.body;
+    try {
+        await User.findByIdAndUpdate (userId, { name, email, password, phnum, gender });
+        res.redirect('/profile');
+    } catch (error) {
+        console.error('Error updating user:', error);
+        res.status(500).send('Error updating user');
+    }
+});
 
 app.get('/checkout', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
@@ -304,7 +319,7 @@ app.post('/checkout', ensureAuthenticated, async (req, res) => {
         await Cart.findOneAndDelete({ userId });
 
         // Redirect to payment or confirmation page
-        res.redirect('/pay'); // or '/confirmation' as appropriate
+        res.redirect('/pay');
     } catch (error) {
         console.error('Error during checkout:', error);
         res.status(500).send('Error during checkout');

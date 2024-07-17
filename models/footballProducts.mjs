@@ -135,6 +135,15 @@ export const footballProducts = [
         brand: 'Nike',
         type: 'Captain Band',
         image: 'https://en-ae.sssports.com/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw3d236360/sss/SSS2/8/4/5/8/4/SSS2_845840053577_1.jpg?sw=700&sh=700&sm=fit'
+    },
+    {
+        name: 'Football Kit',
+        description: 'Complete football kit for matches and training.',
+        price: 19999,
+        category: 'football',
+        brand: 'Adidas',
+        type: 'Kit bag',
+        image: 'https://www.footballkitbox.com/wp-content/uploads/2019/10/Adidas-Stricon-Football-Kit-Box-Set-1.jpg'
     }
 ];
 

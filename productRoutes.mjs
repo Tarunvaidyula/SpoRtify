@@ -94,5 +94,28 @@ router.get('/products-by-brand/:brandName', async (req, res) => {
         res.status(500).send('Error fetching products');
     }
 });
+router.get('/navproducts/:type', async (req, res) => {
+    const { type } = req.params;
+
+    try {
+        const products = await Product.find({ type: type });
+        res.render('navproducts', { type, products });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
+});
+
+router.get('/kit/:category/:type', async (req, res) => {
+    const { category, type } = req.params;
+
+    try {
+        const products = await Product.find({ category: category, type: type });
+        res.render('navproducts', { category, type, products });
+    } catch (error) {
+        console.error('Error fetching products:', error);
+        res.status(500).send('Error fetching products');
+    }
+}); 
 
 export default router;

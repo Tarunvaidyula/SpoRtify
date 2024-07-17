@@ -5,6 +5,7 @@
         <div class="products">
             <% if (cart && cart.items.length > 0) { %>
                 <% cart.items.forEach(item => { %>
+                    <% if (item.productId) { %>
                     <div class="product">
                         <img src="<%= item.productId.image %>" alt="<%= item.productId.name %>">
                         <div class="product-info">
@@ -24,6 +25,7 @@
                             </button>
                         </div>
                     </div>
+                    <% } %>
                 <% }); %>
             <% } else { %>
                 <p>Your cart is empty.</p>

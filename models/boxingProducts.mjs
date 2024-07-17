@@ -126,6 +126,14 @@ export const boxingProducts = [
         brand: 'Grant',
         type: 'Punch Mitts',
         image: 'https://example.com/grant-boxing-punch-mitts.jpg'
+    },
+    {
+        name: 'Boxing Kit',
+        description: 'Complete boxing kit for beginners and advanced boxers.',
+        price: 19999,
+        category: 'boxing',
+        brand: 'Everlast',
+        type: 'Kit bag',
     }
 ];
 

@@ -12,11 +12,7 @@ const UserSchema = new mongoose.Schema({
     email: { type: String, required: true, unique: true, trim: true, index: true },
     password: { type: String, required: true },
     phnum: Number,
-    bday: Date,
     gender: String,
-    billing: String,
-    lastorder: Date,
-    redeem: Number,
     cardNumber: Number,
 }, { timestamps: true });
 

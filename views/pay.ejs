@@ -8,13 +8,14 @@
     <script src="https://www.paypal.com/sdk/js?client-id=AejknfAr40203EjPX32aGZWjfEZzBP8T8C9qVTasaNzMwvrUolPJrTzi6TPVcA8LBN3spNOdpo-an2qk&currency=USD"></script>
 </head>
 <body>
-    <h1>Pay with PayPal</h1>
-    <div id="paypal-button-container"></div>
+    <div id="paypal-button-container">
+        <h1><i>Pay with PayPal</i></h1>
+    </div>
 
     <script>
         paypal.Buttons({
             createOrder: function(data, actions) {
-                var totalAmount =  100.00; // Example: Replace with your dynamic or static total amount value
+                var totalAmount =  100.00;
     
                 return fetch('/create-order', {
                     method: 'POST',
@@ -27,7 +28,7 @@
                 }).then(function(res) {
                     return res.json();
                 }).then(function(orderData) {
-                    return orderData.id; // Return the order ID from the response
+                    return orderData.id;
                 });
             },
             onApprove: function(data, actions) {

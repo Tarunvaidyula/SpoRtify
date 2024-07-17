@@ -79,7 +79,7 @@ export const cricketProducts = [
         price: 6999,
         category: 'cricket',
         brand: 'Puma',
-        type: 'Kit Bag',
+        type: 'Kit bag',
         image: 'https://example.com/puma-cricket-kit-bag.jpg'
     },
     {

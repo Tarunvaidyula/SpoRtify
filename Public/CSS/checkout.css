@@ -9,7 +9,7 @@ body{
     height: 100vh;
     display: grid;
     align-items: center;
-    background: linear-gradient(120deg, black,red);
+    background: linear-gradient(120deg, black, chocolate);
 }
 
 .contact-in{
@@ -20,14 +20,14 @@ body{
     flex-wrap: wrap;
     padding: 10px;
     border-radius: 20px;
-    background: #fff;
+    background-color: whitesmoke;
     box-shadow: 0px 0px 0px 0px;
     align-items: center;
 
 }
 
 .contact-map{
-    width: 100%;
+    width: 70px;
     height: auto;
     flex: 50%;
     display: flex;
@@ -50,6 +50,8 @@ body{
 
 .contact-form h1{
     margin-bottom: 10px;
+    color: black;
+    font-style: italic;
 }
 
 .contact-form-txt{
@@ -64,24 +66,10 @@ body{
     padding: 15px;
 }
 
-.time_slot {
-    width: 100%;
-    height: 40px;
-    color: #000;
-    border: 1px solid #bcbcbc;
-    border-radius: 50px;
-    outline: none;
-    margin-bottom: 20px;
-    padding: 15px;
-}
-
 .contact-form-txt::placeholder{
     color:#aaa;
 }
 
-.time_slot::placeholder {
-    color:#aaa;
-}
 
 .contact-form-textarea{
     width: 100%;
@@ -109,6 +97,10 @@ body{
     padding: 10px 0;
     cursor: pointer;
     font-size: 18px;
+}
+.contact-form-btn:hover{
+    background: linear-gradient(120deg, black, chocolate);
+    transform: scale(1.1);
 }
 
 .address_form {

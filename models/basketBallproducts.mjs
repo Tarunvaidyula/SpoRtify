@@ -135,6 +135,15 @@ export const basketballProducts = [
         brand: 'Under Armour',
         type: 'Elbow Pad',
         image: 'https://example.com/under-armour-basketball-elbow-pad.jpg'
+    },
+    {
+        name:'Basketball Kit',
+        description:'Basketball kit for beginners',
+        price: 19999,
+        category: 'basketball',
+        brand: 'Nike',
+        type: 'Kit bag',
+        image: 'https://example.com/nike-basketball-kit.jpg'
     }
 ];
 

@@ -135,6 +135,15 @@ export const badmintonProducts = [
         brand: 'Li-Ning',
         type: 'Wrist Support',
         image: 'https://example.com/li-ning-badminton-wrist-support.jpg'
+    },
+    {
+        name: 'Yonex Badminton Kit',
+        description: 'Kitbag for badminton equipment from Yonex.',
+        price: 5999,
+        category: 'badminton',
+        brand: 'Yonex',
+        type: 'Kit bag',
+        image: 'https://example.com/yonex-badminton-kitbag.jpg'
     }
 ];
 

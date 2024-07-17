@@ -43,9 +43,15 @@
             <b>
             <li><a href="">Sports wear</a>
                 <ul class="dropdown" style="display: none;">
-                    <li><a href="football-products">Jerseys</a></li>
-                    <li><a href="boxing-products">Bands/<br>Sleeves</a></li>
-                    <li><a href="basketball-products">Goggles/<br>Sports Glasses</a></li>
+                    <li><a href="navproducts/Jersey">Jerseys</a></li>
+                    <li><a href="">Bands</a>
+                    <ul class="dropdown" style="display: none;">
+                        <li><a href="navproducts/Wristband"> Wrist bands</a></li>
+                        <li><a href="navproducts/Headband"> Head bands</a></li>
+                        <li><a href="navproducts/Armband">Arm bands</a></li>
+                    </ul>
+                    </li>
+                    <li><a href="navproducts/Arm Sleeve">sleeves</a></li>
                 </ul>
             </li>
             <li><a href="">Shop By Sport</a>
@@ -58,19 +64,20 @@
                     <li><a href="badminton-products">Badminton</a></li>
                 </ul>
             </li>
-            <li><a href="">Bat</a></li>
-            <li><a href="">Ball</a></li> 
+            <li><a href="/navproducts/Bat">Bat</a></li>
+            <li><a href="/navproducts/Ball">Ball</a></li> 
             <li><a href="">Accessories</a>
                 <ul class="dropdown4" style="display: none;">
-                    <li><a href="">Kit Bags</a></li>
-                    <li><a href="">Shoes</a></li>
-                    <li><a href="">Gloves & Guards</a></li>
+                    <li><a href="navproducts/Kit bag">Kit Bags</a></li>
+                    <li><a href="navproducts/Shoes">Shoes</a></li>
+                    <li><a href="navproducts/Gloves">Gloves</a></li>
+                    <li><a href="navproducts/Guards">Guards</a></li>
                 </ul>
             <li><a href="">Headwear</a>
             <ul class="dropdown3" style="display: none;">
-                <li><a href="">Caps</a></li>
-                <li><a href="">Helmets</a></li>
-                <li><a href=""> Headbands</a></li>
+                <li><a href="navproducts/Cap">Caps</a></li>
+                <li><a href="navproducts/Helmet">Helmets</a></li>
+                <li><a href="navproducts/Headband"> Headbands</a></li>
         </ul>
     </b>
         </li>
@@ -115,7 +122,8 @@
             <span class="nav-arrow" onclick="nextImage()">&#10095;</span>
         </div>
     </div><br><br>
-
+    <div class="sport">
+    <h1>Our Products</h1></div>
     <div class="sport-boxes-container">
         <div class="sport-box">
             <a href="football-products">
@@ -211,32 +219,25 @@
     <h2>Champions Choice</h2>
 </section>
 <div class="sport-kit">
-    <div class="kit">
-        <a href="#" onclick="openModal('cricket')">
-        <img src="" alt="Men" data-product-id="cricket">
-            <h3>Cricket Kit</h3>
-        </a>
+    <div class="kit/cricket/:type">
+      <a href="kit" >
+        <img src="cricket-kit.jpg" alt="Cricket Kit" data-product-id="cricket">
+        <h3>Cricket Kit</h3>
+      </a>
     </div>
     <div class="kit">
-        <a href="#" onclick="openModal('football')">
-            <img src="images/women.jpg" alt="Women" data-product-id="football">
-            <h3>Football Kit</h3>
-        </a>
+      <a href="kit/football/Kit bag">
+        <img src="football-kit.jpg" alt="Football Kit" data-product-id="football">
+        <h3>Football Kit</h3>
+      </a>
     </div>
     <div class="kit">
-        <a href="#" onclick="openModal('badminton')">
-            <img src="" alt="Kids" data-product-id="badminton">
-            <h3>Badminton Kit</h3>
-        </a>
+      <a href="kit/badminton/Kit bag">
+        <img src="badminton-kit.jpg" alt="Badminton Kit" data-product-id="badminton">
+        <h3>Badminton Kit</h3>
+      </a>
     </div>
-</div>
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <div id="modalBody">
-        </div>
-    </div>
-</div>
+  </div>
 </main>
 <%- include('partials/footer.ejs') %>
 <script src="/JS/homepage.js"></script>
