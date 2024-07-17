@@ -250,7 +250,7 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
     const userId = req.user._id;
     const { name, email, password, gender, phnum } = req.body;
     try {
-        await User.findByIdAndUpdate (userId, { name, email, password, phnum, gender });
+        await User.findByIdAndUpdate (userId, { name, email, phnum, gender });
         res.redirect('/profile');
     } catch (error) {
         console.error('Error updating user:', error);
