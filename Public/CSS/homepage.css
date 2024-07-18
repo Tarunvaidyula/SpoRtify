@@ -120,12 +120,6 @@ body{
   left: 0;
 }
 
-.dropdown li a img {
-  width: 70px;
-  height: auto; 
-  margin-right: 20px;
-}
-
 .deal-container{
   align-items: center;
   margin-left:60px;

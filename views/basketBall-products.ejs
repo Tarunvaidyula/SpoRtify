@@ -1,6 +1,46 @@
-<main>
-    <%- include('partials/header.ejs') %>
-    <div class="product-container">
+<%- include('partials/header.ejs') %>
+<main class="product-content">
+    <div class="filter">
+        <form id="filter-form" action="/basketball-products" method="GET">
+            <fieldset>
+                <legend>Brands:</legend>
+                <label><input type="checkbox" name="brand" value="Spalding"> Spalding</label>
+                <label><input type="checkbox" name="brand" value="Wilson"> Wilson</label>
+                <label><input type="checkbox" name="brand" value="Nike"> Nike</label>
+                <label><input type="checkbox" name="brand" value="Adidas"> Adidas</label>
+                <label><input type="checkbox" name="brand" value="Under Armour"> Under Armour</label>
+            </fieldset>
+            <fieldset>
+                <legend>Types:</legend>
+                <label><input type="checkbox" name="type" value="Basketball"> Basketball</label>
+                <label><input type="checkbox" name="type" value="Basketball Hoop"> Basketball Hoop</label>
+                <label><input type="checkbox" name="type" value="Basketball Shoes"> Basketball Shoes</label>
+                <label><input type="checkbox" name="type" value="Jersey"> Jersey</label>
+                <label><input type="checkbox" name="type" value="Shorts"> Shorts</label>
+                <label><input type="checkbox" name="type" value="Backboard"> Backboard</label>
+                <label><input type="checkbox" name="type" value="Training Aid"> Training Aid</label>
+                <label><input type="checkbox" name="type" value="Ball Bag"> Ball Bag</label>
+                <label><input type="checkbox" name="type" value="Socks"> Socks</label>
+                <label><input type="checkbox" name="type" value="Arm Sleeve"> Arm Sleeve</label>
+                <label><input type="checkbox" name="type" value="Scoreboard"> Scoreboard</label>
+                <label><input type="checkbox" name="type" value="Net"> Net</label>
+                <label><input type="checkbox" name="type" value="Headband"> Headband</label>
+                <label><input type="checkbox" name="type" value="Referee Whistle"> Referee Whistle</label>
+                <label><input type="checkbox" name="type" value="Elbow Pad"> Elbow Pad</label>
+                <label><input type="checkbox" name="type" value="Kit bag"> Kit bag</label>
+            </fieldset>
+            <fieldset>
+                <legend>Price Range:</legend>
+                <label><input type="radio" name="priceRange" value="0-1000"> Rs.100 - Rs.1000</label><br>
+                <label><input type="radio" name="priceRange" value="1001-3000"> Rs.1001 - Rs.3000</label><br>
+                <label><input type="radio" name="priceRange" value="3001-5000"> Rs.3001 - Rs.5000</label><br>
+                <label><input type="radio" name="priceRange" value="5001-10000"> Rs.5001 - Rs.10000</label><br>
+                <label><input type="radio" name="priceRange" value="10001-20000"> Rs.10001 - Rs.20000</label><br>
+            </fieldset>
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
+<div class="product-container">
         <% if (basketballProducts && basketballProducts.length > 0) { %>
             <% basketballProducts.forEach(product => { %>
                 <div class="product-box">

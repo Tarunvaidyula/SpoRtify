@@ -1,5 +1,46 @@
-<main>
-    <%- include('partials/header.ejs') %>
+<%- include('partials/header.ejs') %>
+<main class="product-content">
+    <div class="filter">
+        <form id="filter-form" action="/tabletennis-products" method="GET">
+            <fieldset>
+                <legend>Brands:</legend>
+                <label><input type="checkbox" name="brand" value="Butterfly"> Butterfly</label>
+                <label><input type="checkbox" name="brand" value="Stiga"> Stiga</label>
+                <label><input type="checkbox" name="brand" value="DHS"> DHS</label>
+                <label><input type="checkbox" name="brand" value="Yasaka"> Yasaka</label>
+                <label><input type="checkbox" name="brand" value="Donic"> Donic</label>
+                <label><input type="checkbox" name="brand" value="Killerspin"> Killerspin</label>
+                <label><input type="checkbox" name="brand" value="Andro"> Andro</label>
+                <label><input type="checkbox" name="brand" value="Tibhar"> Tibhar</label>
+                <label><input type="checkbox" name="brand" value="Cornilleau"> Cornilleau</label>
+                <label><input type="checkbox" name="brand" value="Generic"> Generic</label>
+             </fieldset>
+            <fieldset>
+                <legend>Types:</legend>
+                <label><input type="checkbox" name="type" value="Racket"> Racket</label>
+                <label><input type="checkbox" name="type" value="Table"> Table</label>
+                <label><input type="checkbox" name="type" value="Balls"> Balls</label>
+                <label><input type="checkbox" name="type" value="Rubber"> Rubber</label>
+                <label><input type="checkbox" name="type" value="Net"> Net</label>
+                <label><input type="checkbox" name="type" value="Paddle"> Paddle</label>
+                <label><input type="checkbox" name="type" value="Shoes"> Shoes</label>
+                <label><input type="checkbox" name="type" value="Blade"> Blade</label>
+                <label><input type="checkbox" name="type" value="Table Cover"> Table Cover</label>
+                <label><input type="checkbox" name="type" value="Bag"> Bag</label>
+                <label><input type="checkbox" name="type" value="Kit bag"> Kit bag</label>
+            </fieldset>
+            <fieldset>
+                <legend>Price Range:</legend>
+                <label><input type="radio" name="priceRange" value="0-1000"> Rs.100 - Rs.1000</label><br>
+                <label><input type="radio" name="priceRange" value="1001-3000"> Rs.1001 - Rs.3000</label><br>
+                <label><input type="radio" name="priceRange" value="3001-5000"> Rs.3001 - Rs.5000</label><br>
+                <label><input type="radio" name="priceRange" value="5001-10000"> Rs.5001 - Rs.10000</label><br>
+                <label><input type="radio" name="priceRange" value="10001-30000"> Rs.10001 - Rs.30000</label><br>
+            </fieldset>
+
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
     <div class="product-container">
         <% if (tabletennisProducts && tabletennisProducts.length > 0) { %>
             <% tabletennisProducts.forEach(product => { %>

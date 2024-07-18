@@ -1,62 +1,96 @@
 body {
-    background-color: black;
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow-x: hidden;
+  background-color: black;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
 }
+
 #popular-product {
   margin: 80px auto;
   text-align: center;
 }
 
-.content-container {
+.product-content {
   display: flex;
+  padding: 20px;
 }
 
-.filter-sidebar {
+.filter {
   width: 250px;
   padding: 20px;
   border: 1px solid #ccc;
   border-radius: 10px;
-  margin-right: 20px;
   background-color: #f9f9f9;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  margin-right: 20px;
 }
 
-.filter-group {
-  margin-bottom: 20px;
-}
-
-.filter-group h4 {
+.filter fieldset {
+  border: 1px solid #ddd;
   margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
 }
 
-.filter-group div {
-  margin-bottom: 10px;
+.filter legend {
+  font-weight: bold;
+  padding: 5px;
 }
 
-.product-container {
+.filter label {
   display: flex;
-  overflow-x: auto;
-  margin: 0 -15px;
-  padding: 15px 0;
-  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.filter input[type="checkbox"],
+.filter input[type="radio"] {
+  margin-right: 10px;
+}
+.filter input[type="checkbox"],
+.filter input[type="radio"] {
+  cursor: pointer;
+}
+
+.filter button{
+  width: 100%;
+  padding: 10px;
+  background-color: #222;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all ease 0.3s;
+}
+.filter button:hover {
+  background-color: #333;
+  transform: scale(1.1);
+}
+.product-container {
+  flex-grow: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-left: 120px;
+  margin-right: 120px;
 }
 
 .product-box {
-  flex: 0 0 auto;
-  width: 300px;
   border: 1px solid #eeeeee;
   border-radius: 20px;
-  background-color: transparent;
+  background-color: #222;
   padding: 20px;
-  margin: 15px;
   display: flex;
   flex-direction: column;
   position: relative;
+  box-sizing: border-box;
   cursor: pointer;
   overflow: hidden;
+  width: calc(100% - 20px);
+  height: 350px;
 }
 
 .product-box img {
@@ -66,6 +100,7 @@ body {
   object-position: center;
   border-radius: 20px 20px 0 0;
 }
+
 .product-box img:hover {
   transform: scale(1.1);
 }
@@ -75,7 +110,7 @@ body {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 10px;
-  text-align: center; 
+  text-align: center;
 }
 
 .product-box span {
@@ -114,3 +149,14 @@ body {
   cursor: pointer;
 }
 
+@media (max-width: 768px) {
+  .product-box {
+      width: calc(50% - 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .product-box {
+      width: 100%;
+  }
+}

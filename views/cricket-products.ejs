@@ -1,6 +1,40 @@
-<main>
     <%- include('partials/header.ejs') %>
-    <h1>Cricket Products</h1>
+    <main class="product-content">
+    <div class="filter">
+        <form id="filter-form" action="/cricket-products" method="GET">
+            <fieldset>
+                <legend>Brands:</legend>
+                <label><input type="checkbox" name="brand" value="Nike"> Nike</label>
+                <label><input type="checkbox" name="brand" value="Adidas"> Adidas</label>
+                <label><input type="checkbox" name="brand" value="Puma"> Puma</label>
+                <label><input type="checkbox" name="brand" value="Reebok"> Reebok</label>
+            </fieldset>
+            <fieldset>
+                <legend>Types:</legend>
+                <label><input type="checkbox" name="type" value="Bat"> Bat</label>
+                <label><input type="checkbox" name="type" value="Helmet"> Helmet</label>
+                <label><input type="checkbox" name="type" value="Gloves"> Gloves</label>
+                <label><input type="checkbox" name="type" value="Thigh Guard"> Thigh Guard</label>
+                <label><input type="checkbox" name="type" value="Ball"> Ball</label>
+                <label><input type="checkbox" name="type" value="Batting Gloves"> Batting Gloves</label>
+                <label><input type="checkbox" name="type" value="Stumps"> Stumps</label>
+                <label><input type="checkbox" name="type" value="Shoes"> Shoes</label>
+                <label><input type="checkbox" name="type" value="Bat Grip"> Bat Grip</label>
+                <label><input type="checkbox" name="type" value="Arm Guard"> Arm Guard</label>
+                <label><input type="checkbox" name="type" value="Cap"> Cap</label>
+                <label><input type="checkbox" name="type" value="Wicket Keeping Gloves"> Wicket Keeping Gloves</label>
+            </fieldset>
+            <fieldset>
+                <legend>Price Range:</legend>
+                <label><input type="radio" name="priceRange" value="0-1000"> Rs.100 - Rs.1000</label><br>
+                <label><input type="radio" name="priceRange" value="1001-3000"> Rs.1001 - Rs.3000</label><br>
+                <label><input type="radio" name="priceRange" value="3001-5000"> Rs.3001 - Rs.5000</label><br>
+                <label><input type="radio" name="priceRange" value="5001-10000"> Rs.5001 - Rs.10000</label><br>
+                <label><input type="radio" name="priceRange" value="10001-20000"> Rs.10001 - Rs.20000</label><br>
+            </fieldset>
+            <button type="submit">Apply Filters</button>
+        </form>
+    </div>
     <div class="product-container">
         <% if (cricketProducts && cricketProducts.length > 0) { %>
             <% cricketProducts.forEach(product => { %>

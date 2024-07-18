@@ -9,21 +9,21 @@ const category= Product.distinct('category');
 router.get('/football-products', async (req, res) => {
     try {
         let filter = { category: 'football' };
-
-        // Apply filters if provided in query params
-        if (req.query.brand) {
+        if (req.query.brand && typeof req.query.brand === 'string') {
             filter.brand = { $in: req.query.brand.split(',') };
         }
-        if (req.query.type) {
+
+        if (req.query.type && typeof req.query.type === 'string') {
             filter.type = { $in: req.query.type.split(',') };
         }
-        if (req.query.priceRange) {
+
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
             const [minPrice, maxPrice] = req.query.priceRange.split('-');
             filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
         }
 
         const footballProducts = await Product.find(filter);
-        res.render('football-products', { footballProducts});
+        res.render('football-products', { footballProducts });
     } catch (error) {
         console.error('Error fetching football products:', error);
         res.status(500).send('Error fetching football products');
@@ -32,7 +32,22 @@ router.get('/football-products', async (req, res) => {
 
 router.get('/cricket-products', async (req, res) => {
     try {
-        const cricketProducts = await Product.find({ category: 'cricket' });
+        let filter = { category: 'cricket' };
+
+        if (req.query.brand && typeof req.query.brand === 'string') {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+
+        if (req.query.type && typeof req.query.type === 'string') {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+
+        const cricketProducts = await Product.find(filter);
         res.render('cricket-products', { cricketProducts });
     } catch (error) {
         console.error('Error fetching cricket products:', error);
@@ -40,22 +55,44 @@ router.get('/cricket-products', async (req, res) => {
     }
 });
 
-
 router.get('/basketball-products', async (req, res) => {
     try {
-        const basketballProducts = await Product.find({ category: 'basketball' });
-        res.render('basketball-products', { basketballProducts });
+        let filter = { category: 'basketball' };
+
+        if (req.query.brand && typeof req.query.brand === 'string') {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+        if (req.query.type && typeof req.query.type === 'string') {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+        const basketballProducts = await Product.find(filter);
+        res.render('basketball-products', { basketballProducts});
     } catch (error) {
         console.error('Error fetching basketball products:', error);
         res.status(500).send('Error fetching basketball products');
     }
 });
 
-
 router.get('/boxing-products', async (req, res) => {
     try {
-        const boxingProducts = await Product.find({ category: 'boxing' });
-        res.render('boxing-products', { boxingProducts });
+        let filter = { category: 'boxing' };
+
+        if (req.query.brand && typeof req.query.brand === 'string') {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+        if (req.query.type && typeof req.query.type === 'string') {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+        const boxingProducts = await Product.find(filter);
+        res.render('boxing-products', { boxingProducts});
     } catch (error) {
         console.error('Error fetching boxing products:', error);
         res.status(500).send('Error fetching boxing products');
@@ -65,24 +102,49 @@ router.get('/boxing-products', async (req, res) => {
 
 router.get('/tabletennis-products', async (req, res) => {
     try {
-        const tabletennisProducts = await Product.find({ category: 'tabletennis' });
-        res.render('tabletennis-products', { tabletennisProducts });
+        let filter = { category: 'tabletennis' };
+
+        if (req.query.brand && typeof req.query.brand === 'string') {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+        if (req.query.type && typeof req.query.type === 'string') {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+        const tabletennisProducts = await Product.find(filter);
+        res.render('tabletennis-products', { tabletennisProducts});
     } catch (error) {
         console.error('Error fetching tabletennis products:', error);
         res.status(500).send('Error fetching tabletennis products');
     }
-    
 });
+
 
 router.get('/badminton-products', async (req, res) => {
     try {
-        const badmintonProducts = await Product.find({ category: 'badminton' });
-        res.render('badminton-products', { badmintonProducts });
+        let filter = { category: 'badminton' };
+
+        if (req.query.brand && typeof req.query.brand === 'string') {
+            filter.brand = { $in: req.query.brand.split(',') };
+        }
+        if (req.query.type && typeof req.query.type === 'string') {
+            filter.type = { $in: req.query.type.split(',') };
+        }
+        if (req.query.priceRange && typeof req.query.priceRange === 'string') {
+            const [minPrice, maxPrice] = req.query.priceRange.split('-');
+            filter.price = { $gte: parseInt(minPrice), $lte: parseInt(maxPrice) };
+        }
+        const badmintonProducts = await Product.find(filter);
+        res.render('badminton-products', { badmintonProducts});
     } catch (error) {
         console.error('Error fetching badminton products:', error);
         res.status(500).send('Error fetching badminton products');
     }
 });
+
 router.get('/products-by-brand/:brandName', async (req, res) => {
     const { brandName } = req.params;
 

@@ -1,52 +1,45 @@
-    <%- include('partials/header.ejs') %>
-        <main class="product-content">
-            <form id="filter-form">
-                <!-- Brand Filters -->
+<%- include('partials/header.ejs') %>
+<main class="product-content">
+        <div class="filter">
+            <form id="filter-form" action="/football-products" method="GET">
                 <fieldset>
                     <legend>Brands:</legend>
                     <label><input type="checkbox" name="brand" value="Nike"> Nike</label>
                     <label><input type="checkbox" name="brand" value="Adidas"> Adidas</label>
                     <label><input type="checkbox" name="brand" value="Puma"> Puma</label>
-                    <!-- Add more brands as needed -->
                 </fieldset>
-        
-                <!-- Type Filters -->
                 <fieldset>
                     <legend>Types:</legend>
                     <label><input type="checkbox" name="type" value="Football"> Football</label>
                     <label><input type="checkbox" name="type" value="Goalkeeper Gloves"> Goalkeeper Gloves</label>
-                    <!-- Add more types as needed -->
+                    <label><input type="checkbox" name="type" value="Football Net"> Football Net</label>
+                    <label><input type="checkbox" name="type" value="Shin Guards"> Shin Guards</label>
                 </fieldset>
-        
-                <!-- Price Range Filter -->
                 <fieldset>
                     <legend>Price Range:</legend>
-                    <label><input type="radio" name="priceRange" value="0-1000"> Rs.0 - Rs.1000</label><br>
+                    <label><input type="radio" name="priceRange" value="0-1000"> Rs.100 - Rs.1000</label><br>
                     <label><input type="radio" name="priceRange" value="1001-3000"> Rs.1001 - Rs.3000</label><br>
                     <label><input type="radio" name="priceRange" value="3001-5000"> Rs.3001 - Rs.5000</label><br>
-                    <!-- Add more price ranges as needed -->
                 </fieldset>
-        
                 <button type="submit">Apply Filters</button>
             </form>
-<div class="product-container"></div>
-
-            <h1>Football Products</h1>
-
-    <div class="product-container">
-        <% if (footballProducts && footballProducts.length > 0) { %>
-            <% footballProducts.forEach(product => { %>
-                <div class="product-box">
-                    <img src='<%= product.image %>' alt="<%= product.name %>">
-                    <strong><%= product.name %></strong><br>
-                    <span class="description"><%= product.description %></span>
-                    <span class="price">Rs.<%= product.price %></span>
-                    <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
-                </div>
-            <% }); %>
-        <% } else { %>
-            <p>No football products available.</p>
-        <% } %>
-    </div>
+        </div>
+        <div class="product-container">
+            <% if (footballProducts && footballProducts.length > 0) { %>
+                <% footballProducts.forEach(product => { %>
+                    <div class="product-box">
+                        <img src='<%= product.image %>' alt="<%= product.name %>">
+                        <strong><%= product.name %></strong><br>
+                        <span class="description"><%= product.description %></span>
+                        <span class="price">Rs.<%= product.price %></span>
+                        <button class="add-to-cart" data-id="<%= product._id %>">Add to Cart</button>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No football products available.</p>
+            <% } %>
+        </div>
     </main>
     <%- include('./partials/footer.ejs') %>
+</body>
+</html>
