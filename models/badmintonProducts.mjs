@@ -8,7 +8,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'Racket',
-        image: 'https://example.com/yonex-badminton-racket.jpg'
+        image: 'https://m.media-amazon.com/images/I/61qYCfbe6EL._AC_UF894,1000_QL80_.jpg'
     },
     {
         name: 'Li-Ning Badminton Shuttlecock',
@@ -17,16 +17,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Li-Ning',
         type: 'Shuttlecock',
-        image: 'https://example.com/li-ning-badminton-shuttlecock.jpg'
-    },
-    {
-        name: 'Victor Badminton Shoes',
-        description: 'Professional badminton shoes from Victor.',
-        price: 4999,
-        category: 'badminton',
-        brand: 'Victor',
-        type: 'Shoes',
-        image: 'https://example.com/victor-badminton-shoes.jpg'
+        image: 'https://www.asiansports.in/cdn/shop/files/li-ning-champ-76-1.png?v=1683709638'
     },
     {
         name: 'Yonex Badminton Grip',
@@ -35,7 +26,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'Grip',
-        image: 'https://example.com/yonex-badminton-grip.jpg'
+        image: 'https://5.imimg.com/data5/SELLER/Default/2022/10/RG/VH/GY/111519400/badminton-grip-yonex-500x500.jpg'
     },
     {
         name: 'Li-Ning Badminton Bag',
@@ -44,7 +35,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Li-Ning',
         type: 'Bag',
-        image: 'https://example.com/li-ning-badminton-bag.jpg'
+        image: 'https://m.media-amazon.com/images/I/61jgAvmFg9L.jpg'
     },
     {
         name: 'Yonex Badminton String',
@@ -53,7 +44,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'String',
-        image: 'https://example.com/yonex-badminton-string.jpg'
+        image: 'https://www.yonex.com/media/catalog/product/b/g/bgas_011_ex_pac.png?quality=80&fit=bounds&height=819&width=600&canvas=600:819'
     },
     {
         name: 'Victor Badminton Grip Powder',
@@ -62,25 +53,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Victor',
         type: 'Grip Powder',
-        image: 'https://example.com/victor-badminton-grip-powder.jpg'
-    },
-    {
-        name: 'Yonex Badminton Shirt',
-        description: 'Comfortable badminton shirt from Yonex.',
-        price: 1999,
-        category: 'badminton',
-        brand: 'Yonex',
-        type: 'Shirt',
-        image: 'https://example.com/yonex-badminton-shirt.jpg'
-    },
-    {
-        name: 'Li-Ning Badminton Shorts',
-        description: 'Durable badminton shorts from Li-Ning.',
-        price: 1499,
-        category: 'badminton',
-        brand: 'Li-Ning',
-        type: 'Shorts',
-        image: 'https://example.com/li-ning-badminton-shorts.jpg'
+        image: 'https://images-eu.ssl-images-amazon.com/images/I/4117XTb8LpL._AC_UL750_SR750,750_.jpg'
     },
     {
         name: 'Victor Badminton Socks',
@@ -89,7 +62,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Victor',
         type: 'Socks',
-        image: 'https://example.com/victor-badminton-socks.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSmxtdC3LUBDET3KiruNQbksR0YCTsgEhPig&s'
     },
     {
         name: 'Yonex Badminton Wristband',
@@ -98,7 +71,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'Wristband',
-        image: 'https://example.com/yonex-badminton-wristband.jpg'
+        image: 'https://5.imimg.com/data5/AM/QK/OB/SELLER-37667346/yonex-ac489ex-wrist-band.jpg'
     },
     {
         name: 'Li-Ning Badminton Cap',
@@ -107,16 +80,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Li-Ning',
         type: 'Cap',
-        image: 'https://example.com/li-ning-badminton-cap.jpg'
-    },
-    {
-        name: 'Victor Badminton Towel',
-        description: 'Towel for badminton players from Victor.',
-        price: 399,
-        category: 'badminton',
-        brand: 'Victor',
-        type: 'Towel',
-        image: 'https://example.com/victor-badminton-towel.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8yqMfD3dgW_VlMkc1lBdJNzb3JHQVMZeAVQ&s'
     },
     {
         name: 'Yonex Badminton Sling Bag',
@@ -125,7 +89,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'Sling Bag',
-        image: 'https://example.com/yonex-badminton-sling-bag.jpg'
+        image: 'https://m.media-amazon.com/images/I/9119dF8LQQL.jpg'
     },
     {
         name: 'Li-Ning Badminton Wrist Support',
@@ -134,7 +98,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Li-Ning',
         type: 'Wrist Support',
-        image: 'https://example.com/li-ning-badminton-wrist-support.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRBo_vTQN9EeCwAL7I-yNmeSORRywA16pU8AQ&s'
     },
     {
         name: 'Yonex Badminton Kit',
@@ -143,7 +107,7 @@ export const badmintonProducts = [
         category: 'badminton',
         brand: 'Yonex',
         type: 'Kit bag',
-        image: 'https://example.com/yonex-badminton-kitbag.jpg'
+        image: 'https://rukminim2.flixcart.com/image/850/1000/jsoyrgw0/sport-bag/d/h/h/l-9829lx-tour-edition-badminton-kit-bag-9829lx-yonex-70-original-imafe6wzdqpzvzj4.jpeg?q=90&crop=false'
     }
 ];
 

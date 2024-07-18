@@ -85,3 +85,13 @@ let currentIndex = 0;
             }
         });
     });
+    const productContainer = document.querySelector('.product-container');
+
+    productContainer.addEventListener('mouseenter', () => {
+      productContainer.style.animationPlayState = 'paused';
+    });
+    
+    productContainer.addEventListener('mouseleave', () => {
+      productContainer.style.animationPlayState = 'running';
+    });
+    

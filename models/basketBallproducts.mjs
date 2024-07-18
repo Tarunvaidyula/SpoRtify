@@ -8,7 +8,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Spalding',
         type: 'Basketball',
-        image: 'https://example.com/spalding-nba-basketball.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR7F2fA6BDH5O_FOblvnseOIhPQ6mqG33NBcA&s'
     },
     {
         name: 'Wilson Basketball Hoop',
@@ -17,34 +17,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Wilson',
         type: 'Basketball Hoop',
-        image: 'https://example.com/wilson-basketball-hoop.jpg'
-    },
-    {
-        name: 'Nike Basketball Shoes',
-        description: 'Performance basketball shoes from Nike.',
-        price: 9999,
-        category: 'basketball',
-        brand: 'Nike',
-        type: 'Basketball Shoes',
-        image: 'https://example.com/nike-basketball-shoes.jpg'
-    },
-    {
-        name: 'Adidas Basketball Jersey',
-        description: 'Official NBA jersey from Adidas.',
-        price: 7999,
-        category: 'basketball',
-        brand: 'Adidas',
-        type: 'Jersey',
-        image: 'https://example.com/adidas-basketball-jersey.jpg'
-    },
-    {
-        name: 'Under Armour Basketball Shorts',
-        description: 'Comfortable basketball shorts from Under Armour.',
-        price: 4999,
-        category: 'basketball',
-        brand: 'Under Armour',
-        type: 'Shorts',
-        image: 'https://example.com/under-armour-basketball-shorts.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTFKuEDMqpCKrWt4aDSm8oVHh0bkAn-Iq3tCA&s'
     },
     {
         name: 'Spalding Basketball Backboard',
@@ -53,16 +26,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Spalding',
         type: 'Backboard',
-        image: 'https://example.com/spalding-basketball-backboard.jpg'
-    },
-    {
-        name: 'Wilson Basketball Training Aid',
-        description: 'Training aid for basketball players from Wilson.',
-        price: 3999,
-        category: 'basketball',
-        brand: 'Wilson',
-        type: 'Training Aid',
-        image: 'https://example.com/wilson-basketball-training-aid.jpg'
+        image: 'https://images-cdn.ubuy.co.in/66187853480a355faf7d3687-spalding-eco-composite-32-inch.jpg'
     },
     {
         name: 'Nike Basketball Ball Bag',
@@ -71,7 +35,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Nike',
         type: 'Ball Bag',
-        image: 'https://example.com/nike-basketball-ball-bag.jpg'
+        image: 'https://images-cdn.ubuy.co.in/66717126c6c17939f2274f72-nike-hoops-elite-backpack-white.jpg'
     },
     {
         name: 'Adidas Basketball Socks',
@@ -80,7 +44,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Adidas',
         type: 'Socks',
-        image: 'https://example.com/adidas-basketball-socks.jpg'
+        image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/b0ce147330d74c4a9a20ad0f0120ac1a_9366/Basketball_Crew_Socks_3_Pairs_Black_GU4382_03_standard.jpg'
     },
     {
         name: 'Under Armour Compression Arm Sleeve',
@@ -89,7 +53,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Under Armour',
         type: 'Arm Sleeve',
-        image: 'https://example.com/under-armour-basketball-arm-sleeve.jpg'
+        image: 'https://m.media-amazon.com/images/I/61M5egHHyaL._AC_UY1100_.jpg'
     },
     {
         name: 'Spalding Digital Scoreboard',
@@ -98,7 +62,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Spalding',
         type: 'Scoreboard',
-        image: 'https://example.com/spalding-basketball-scoreboard.jpg'
+        image: 'https://m.media-amazon.com/images/I/81v7ZegloHL.jpg'
     },
     {
         name: 'Wilson Basketball Net',
@@ -107,7 +71,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Wilson',
         type: 'Net',
-        image: 'https://example.com/wilson-basketball-net.jpg'
+        image: 'https://m.media-amazon.com/images/S/aplus-media-library-service-media/116f3ca0-cc50-46e6-983f-e0504ad7834d.__CR0,0,300,400_PT0_SX300_V1___.jpg'
     },
     {
         name: 'Nike Basketball Headband',
@@ -116,7 +80,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Nike',
         type: 'Headband',
-        image: 'https://example.com/nike-basketball-headband.jpg'
+        image: 'https://m.media-amazon.com/images/I/41Zxm-183ML._SR600%2C315_PIWhiteStrip%2CBottomLeft%2C0%2C35_PIStarRatingFOURANDHALF%2CBottomLeft%2C360%2C-6_SR600%2C315_ZA25%252C212%2C445%2C290%2C400%2C400%2CAmazonEmberBold%2C12%2C4%2C0%2C0%2C5_SCLZZZZZZZ_FMpng_BG255%2C255%2C255.jpg'
     },
     {
         name: 'Adidas Referee Whistle',
@@ -125,7 +89,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Adidas',
         type: 'Referee Whistle',
-        image: 'https://example.com/adidas-basketball-referee-whistle.jpg'
+        image: 'https://images-cdn.ubuy.co.in/63554f31e6e87b77d1444b8c-molten-valkeen-whistle-with-flip-grip.jpg'
     },
     {
         name: 'Under Armour Elbow Pad',
@@ -134,7 +98,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Under Armour',
         type: 'Elbow Pad',
-        image: 'https://example.com/under-armour-basketball-elbow-pad.jpg'
+        image: 'https://m.media-amazon.com/images/I/71-IUfDYG2L._AC_UF1000,1000_QL80_.jpg'
     },
     {
         name:'Basketball Kit',
@@ -143,7 +107,7 @@ export const basketballProducts = [
         category: 'basketball',
         brand: 'Nike',
         type: 'Kit bag',
-        image: 'https://example.com/nike-basketball-kit.jpg'
+        image: 'https://rukminim2.flixcart.com/image/850/1000/kmqn3bk0/sport-bag/2/t/2/standard-champion-soccer-basketball-volleyball-kit-bag-9009-original-imagfket8ynnu2y9.jpeg?q=90&crop=false'
     }
 ];
 

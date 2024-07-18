@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products <%= type %></title>
+    <link rel="stylesheet" href="/CSS/kit.css">
+    <link rel="stylesheet" href="/CSS/headfo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"/>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="/homepage"><img src="/images/Sportify.gif" alt="SpoRtify Logo" width="250" height="200"></a>
+            <div class="search-bar">
+                <form action="/search" method="GET" class="search-form">
+                    <input type="text" name="query" class="search-input" placeholder="Search by product or brand">
+                    <button type="submit" class="search-button"><i class="fa fa-search"></i></button>
+                </form>
+            </div><br>
+            <% if (isAuthenticated) {%>
+                <a href="/logout" style="color: white"><button class="profile-button"><br>Logout</button></a>
+            <% } else { %>
+                <a href="/login" style="color: white">
+                    <button class="profile-button">
+                        <i class="fa fa-user" style="font-size:36px;color:white"></i><br>Login
+                    </button>
+                </a>
+            <% } %>
+            <a href="/cart" style="color: white">
+                <button class="cart-button">
+                    <i class="fa fa-shopping-cart" style="font-size:36px;color:white"></i><br>Cart
+                </button>
+            </a>
+        </div>
+    </header><br><br><br><br>
+    <div class="headkit">
+        <h1><%= category %> <%= type %> Products</h1>
+    </div><br><br>
+    <main class="product-content">
+        <div class="kit-images">
+            <% if (category === 'cricket') { %>
+                <div class="kit-special cricket">
+                    <div class="image-item">
+                        <img src="https://m.media-amazon.com/images/I/31QQhDuSsXL.jpg" alt="Cricket Bat">
+                        <h2>Cricket Bat</h2>
+                        <p>Professional Cricket Bat</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://www.vishalmegamart.com/dw/image/v2/BGHT_PRD/on/demandware.static/-/Sites-vmm-gm-master-catalog/default/dw0a877459/images/large/1230005253.jpg?sw=900&sh=900" alt="Cricket Ball">
+                        <h2>Cricket Ball</h2>
+                        <p>Red Leather Ball</p>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBJyRKGF45rFytyhmaQXDrE85gt8LLG2JoLA&s" alt="Cricket Leg Guards">
+                        <h2>Cricket Leg Guards</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://m.media-amazon.com/images/I/61j8BKLK5UL.jpg" alt="Cricket Helmet">
+                        <h2>Cricket Helmet</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://gmcricket.in/media/catalog/product/cache/757ea7d2b7282843694bdb6de7a23598/p/r/prima-707-batting-gloves.jpg" alt="Cricket Gloves">
+                        <h2>Cricket Gloves</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://5.imimg.com/data5/SELLER/Default/2022/2/BV/UU/WA/14580777/test-match-cricket-leg-guard2-500x500.jpg" alt="Cricket Pads">
+                        <h2>Cricket Pads</h2>
+                    </div>
+                </div>
+            <% } else if (category === 'basketball') { %>
+                <div class="kit-special basketball">
+                    <div class="image-item">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Basketball.png" alt="Basketball">
+                        <h2>Basketball</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://m.media-amazon.com/images/I/61Gc9PkVrWL._AC_UY1100_.jpg" alt="Arm Sleeves">
+                        <h2>Arm Sleeves</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://images-cdn.ubuy.co.in/635f61f1b44df255b80c60e8-reachstop-leg-sleeve-for-women.jpg" alt="Knee Sleeves">
+                        <h2>Knee Sleeves</h2>
+                    </div>
+                </div>
+            <% } else if (category === 'badminton') { %>
+                <div class="kit-special badminton">
+                    <div class="image-item">
+                        <img src="https://m.media-amazon.com/images/I/61qYCfbe6EL._AC_UF894,1000_QL80_.jpg" alt="Badminton Racket">
+                        <h2>Badminton Racket</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://images.jdmagicbox.com/quickquotes/images_main/white-and-green-plastic-badminton-shuttlecock-2184521637-z436lluy.jpg" alt="Shuttlecock">
+                        <h2>Shuttlecock</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTDYlOHKZBgt7jDEDOAsP0p3oWpLPwDxzH90w&s" alt="Racket Grip">
+                        <h2>Racket Grip</h2>
+                    </div>
+                    <div class="image-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT3tnFySgLaQojbPHMmFpksJ-xX07al64W_Iw&s" alt="Headband">
+                        <h2>Headband</h2>
+                    </div>
+                </div>
+            <% } %>
+        </div><br><br><br><br>
+        <div class="product-container">
+            <% if (products && products.length > 0) { %>
+                <% products.forEach(product => { %>
+                    <div class="product-box">
+                        <img src="<%= product.image %>" alt="<%= product.name %>">
+                        <strong><%= product.name %></strong><br>
+                        <span class="description"><%= product.description %></span><br>
+                        <span class="price">Rs. <%= product.price %></span>
+                        <button class="add-to-cart" data-id="<%= product._id %>"><i class="fas fa-shopping-bag"></i>Add to Cart</button>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>No <%= type %> products available.</p>
+            <% } %>
+        </div>
+        <br><br><br><br>
+    </main>
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="column"></div>
+            <div class="column">
+                <h3>Account</h3>
+                <ul>
+                    <% if (isAuthenticated) { %>
+                        <a href="/logout" style="color: white">Logout</a><br><br>
+                    <% } else { %>
+                        <a href="/login" style="color: white">Login</a><br><br>
+                        <a href="/signup" style="color: white">Sign Up</a><br><br>
+                    <% } %>
+                    <li><a href="/profile">Profile</a></li>
+                </ul>
+            </div>
+            <div class="column">
+                <h3>Contact Us</h3>
+                <p style="color: white;">Email: @gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <ul class="social-media">
+                <li><b>Follow Us: </b></li>
+                <li><a href="#" class="icon"><i class="fab fa-facebook-f" style="font-size:30px"></i></a></li>
+                <li><a href="#" class="icon"><i class="fab fa-twitter" style="font-size:30px"></i></a></li>
+                <li><a href="#" class="icon"><i class="fab fa-instagram" style="font-size:30px"></i></a></li>
+            </ul>
+            <p style="color: white">&copy; 2024 F1 Store. All rights reserved.</p>
+        </div>
+    </footer>
+    <script src="/JS/product.js"></script>
+</body>
+</html>

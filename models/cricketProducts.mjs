@@ -8,7 +8,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Nike',
         type: 'Bat',
-        image: 'https://example.com/nike-cricket-bat.jpg'
+        image: 'https://m.media-amazon.com/images/I/31QQhDuSsXL.jpg'
     },
     {
         name: 'Cricket Helmet',
@@ -17,25 +17,25 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Nike',
         type: 'Helmet',
-        image: 'https://example.com/nike-cricket-helmet.jpg'
+        image: 'https://5.imimg.com/data5/SELLER/Default/2020/11/OF/VT/EX/117112039/cricket-helmates.jpg'
     },
     {
         name: 'Cricket Gloves',
         description: 'Durable cricket gloves for players.',
         price: 3999,
         category: 'cricket',
-        brand: 'Nike',
+        brand: 'Adidas',
         type: 'Gloves',
-        image: 'https://example.com/nike-cricket-gloves.jpg'
+        image: 'https://5.imimg.com/data5/EB/IQ/TE/SELLER-3903635/s4c-australian-style-baggy-cap-500x500.jpg'
     },
     {
         name: 'Cricket Thigh Guard',
         description: 'Cricket thigh guard for protection while batting.',
         price: 1999,
         category: 'cricket',
-        brand: 'Nike',
+        brand: 'Puma',
         type: 'Thigh Guard',
-        image: 'https://example.com/nike-cricket-thigh-guard.jpg'
+        image: 'https://images.puma.com/image/upload/f_auto,q_auto,b_rgb:fafafa,w_2000,h_2000/global/030913/03/fnd/IND/fmt/png/Puma-Future-1-Cricket-Thigh-Pad'
     },
     {
         name: 'Cricket Ball',
@@ -44,7 +44,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Adidas',
         type: 'Ball',
-        image: 'https://example.com/adidas-cricket-ball.jpg'
+        image: 'https://rukminim2.flixcart.com/image/850/1000/ball/7/p/t/adidas-cricket-ball-st-county-original-imadkj53kmmbr6cc.jpeg?q=90&crop=false'
     },
     {
         name: 'Cricket Batting Gloves',
@@ -53,7 +53,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Adidas',
         type: 'Batting Gloves',
-        image: 'https://example.com/adidas-cricket-batting-gloves.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTvYD7WmfHQztWxfmcRLI0k-UWmFJjhrf-2Ig&s'
     },
     {
         name: 'Cricket Stumps',
@@ -62,7 +62,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Adidas',
         type: 'Stumps',
-        image: 'https://example.com/adidas-cricket-stumps.jpg'
+        image: 'https://cdn11.bigcommerce.com/s-tj87duh98/images/stencil/1280x1280/products/76381/12565/01__90796.1676021474.jpg?c=1'
     },
     {
         name: 'Cricket Helmet',
@@ -71,7 +71,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Adidas',
         type: 'Helmet',
-        image: 'https://example.com/adidas-cricket-helmet.jpg'
+        image: 'https://ayrtekcricket.wordpress.com/wp-content/uploads/2013/08/129374_cricket-helmet_02_front.jpg?w=300'
     },
     {
         name: 'Cricket Kit Bag',
@@ -80,16 +80,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Puma',
         type: 'Kit bag',
-        image: 'https://example.com/puma-cricket-kit-bag.jpg'
-    },
-    {
-        name: 'Cricket Shoes',
-        description: 'Lightweight cricket shoes for players.',
-        price: 5999,
-        category: 'cricket',
-        brand: 'Puma',
-        type: 'Shoes',
-        image: 'https://example.com/puma-cricket-shoes.jpg'
+        image: 'https://www.kdclick.com/s/637763a5ea78e200824eb640/64929efd2c5560003e421e2f/puma-cricket-kit-1--480x480.jpeg'
     },
     {
         name: 'Cricket Bat Grip',
@@ -98,7 +89,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Puma',
         type: 'Bat Grip',
-        image: 'https://example.com/puma-cricket-bat-grip.jpg'
+        image: 'https://rukminim2.flixcart.com/image/750/900/xif0q/grip/x/m/v/future-cricket-bat-grip-future-puma-original-imagvuzschjqhcfb.jpeg?q=20&crop=false'
     },
     {
         name: 'Cricket Arm Guard',
@@ -107,7 +98,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Puma',
         type: 'Arm Guard',
-        image: 'https://example.com/puma-cricket-arm-guard.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrDE5eVPE4qX2mUYAgqHS2HzoFQ4bwegzsnQ&s'
     },
     {
         name: 'Cricket Cap',
@@ -116,7 +107,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Puma',
         type: 'Cap',
-        image: 'https://example.com/puma-cricket-cap.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTrC-27xqL4mflxWpm-7caiuIsYoTzm9Z-ILA&s'
     },
     {
         name: 'Cricket Wicket Keeping Gloves',
@@ -125,7 +116,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Puma',
         type: 'Wicket Keeping Gloves',
-        image: 'https://example.com/puma-cricket-wicket-keeping-gloves.jpg'
+        image: 'https://5.imimg.com/data5/LI/XP/HI/SELLER-1399525/puma-wicket-keeping-gloves.jpg'
     },
     {
         name: 'Cricket Bat',
@@ -134,7 +125,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Reebok',
         type: 'Bat',
-        image: 'https://example.com/reebok-cricket-bat.jpg'
+        image: 'https://www.tcscricket.com/wp-content/uploads/2023/10/REEBOK-PLAYERS-EDITION-PRO-ENGLISH-WILLOW-CRICKET-BAT-1.jpg'
     },
     {
         name: 'Cricket Gloves',
@@ -143,7 +134,7 @@ export const cricketProducts = [
         category: 'cricket',
         brand: 'Reebok',
         type: 'Gloves',
-        image: 'https://example.com/reebok-cricket-gloves.jpg'
+        image: 'https://5.imimg.com/data5/ANDROID/Default/2023/9/346243829/OX/XB/CY/153249831/product-jpeg.jpg'
     }
 ];
 

@@ -173,7 +173,7 @@ router.get('/kit/:category/:type', async (req, res) => {
 
     try {
         const products = await Product.find({ category: category, type: type });
-        res.render('navproducts', { category, type, products });
+        res.render('kit', { category, type, products });
     } catch (error) {
         console.error('Error fetching products:', error);
         res.status(500).send('Error fetching products');

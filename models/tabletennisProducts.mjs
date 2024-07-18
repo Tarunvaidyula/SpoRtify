@@ -8,16 +8,16 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Butterfly',
         type: 'Racket',
-        image: 'https://example.com/butterfly-table-tennis-racket.jpg'
+        image: 'https://m.media-amazon.com/images/I/61OuTufLqCL._AC_UF894,1000_QL80_.jpg'
     },
     {
         name: 'Stiga Table Tennis Table',
         description: 'Premium table tennis table for indoor use.',
-        price: 29999,
+        price: 150000,
         category: 'tabletennis',
         brand: 'Stiga',
         type: 'Table',
-        image: 'https://example.com/stiga-table-tennis-table.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8eRmLHlqHpuZ2seBVneAOO3ZmwYOxWKF3oQ&s'
     },
     {
         name: 'DHS Table Tennis Balls',
@@ -26,7 +26,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'DHS',
         type: 'Balls',
-        image: 'https://example.com/dhs-table-tennis-balls.jpg'
+        image: 'https://rukminim2.flixcart.com/image/850/1000/k62i5jk0/ball/d/e/h/2-77-standard-3-d40-3-star-abs-seam-10-dhs2710-table-tennis-ball-original-imafzm256rse5keg.jpeg?q=90&crop=false'
     },
     {
         name: 'Yasaka Table Tennis Rubber',
@@ -35,7 +35,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Yasaka',
         type: 'Rubber',
-        image: 'https://example.com/yasaka-table-tennis-rubber.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8-m9iDNT98iB5ztSXQVRZe1rVCGatmrDJmw&s'
     },
     {
         name: 'Donic Table Tennis Net',
@@ -44,7 +44,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Donic',
         type: 'Net',
-        image: 'https://example.com/donic-table-tennis-net.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9CzOU5edMiLABVQJA1HG_CRg38QvKwJHSIA&s'
     },
     {
         name: 'Killerspin Table Tennis Paddle',
@@ -53,16 +53,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Killerspin',
         type: 'Paddle',
-        image: 'https://example.com/killerspin-table-tennis-paddle.jpg'
-    },
-    {
-        name: 'Andro Table Tennis Shoes',
-        description: 'Comfortable table tennis shoes for players.',
-        price: 4999,
-        category: 'tabletennis',
-        brand: 'Andro',
-        type: 'Shoes',
-        image: 'https://example.com/andro-table-tennis-shoes.jpg'
+        image: 'https://images-cdn.ubuy.co.in/65604ea9af20dd428c06e9b7-killerspin-jet-black-combo.jpg'
     },
     {
         name: 'Tibhar Table Tennis Blade',
@@ -71,7 +62,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Tibhar',
         type: 'Blade',
-        image: 'https://example.com/tibhar-table-tennis-blade.jpg'
+        image: 'https://m.media-amazon.com/images/I/41JQn24gP3L.jpg'
     },
     {
         name: 'Cornilleau Table Tennis Cover',
@@ -80,7 +71,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Cornilleau',
         type: 'Table Cover',
-        image: 'https://example.com/cornilleau-table-tennis-cover.jpg'
+        image: 'https://images-cdn.ubuy.co.in/636777d59d5120015f53be04-sogudio-table-tennis-cover-65in.jpg'
     },
     {
         name: 'Butterfly Table Tennis Bag',
@@ -89,7 +80,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Butterfly',
         type: 'Bag',
-        image: 'https://example.com/butterfly-table-tennis-bag.jpg'
+        image: 'https://images-cdn.ubuy.ae/658c04ddff04675d7f1d8312-butterfly-table-tennis-raffines-tour-bag.jpg'
     },
     {
         name: 'Table tennis Kit',
@@ -98,7 +89,7 @@ export const tabletennisProducts = [
         category: 'tabletennis',
         brand: 'Generic',
         type: 'Kit bag',
-        image: 'https://example.com/table-tennis-kit.jpg' 
+        image: 'https://m.media-amazon.com/images/I/711H-8d-sjL._AC_UF894,1000_QL80_.jpg' 
     }
 ];
 

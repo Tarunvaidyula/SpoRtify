@@ -46,15 +46,7 @@ export const footballProducts = [
         type: 'Corner Flags',
         image: 'https://m.media-amazon.com/images/I/61xvzqul-7L._AC_UF350,350_QL80_.jpg'
     },
-    {
-        name: 'Nike Football Jersey',
-        description: 'Official football jersey for matches.',
-        price: 2999,
-        category: 'football',
-        brand: 'Nike',
-        type: 'Jersey',
-        image: 'https://w7.pngwing.com/pngs/376/343/png-transparent-t-shirt-jersey-nike-uniform-football-soccer-jerseys-purple-tshirt-blue.png'
-    },
+   
     {
         name: 'Puma Football Socks',
         description: 'Comfortable football socks for players.',
@@ -143,7 +135,7 @@ export const footballProducts = [
         category: 'football',
         brand: 'Adidas',
         type: 'Kit bag',
-        image: 'https://www.footballkitbox.com/wp-content/uploads/2019/10/Adidas-Stricon-Football-Kit-Box-Set-1.jpg'
+        image: 'https://rukminim2.flixcart.com/image/850/1000/k6dxocw0/kit/s/x/t/laliga-football-kit-na-labh-traders-original-imafzv8vu2rgd7rh.jpeg?q=90&crop=false'
     }
 ];
 

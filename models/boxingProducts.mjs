@@ -8,7 +8,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Everlast',
         type: 'Boxing Gloves',
-        image: 'https://example.com/everlast-boxing-gloves.jpg'
+        image: 'https://m.media-amazon.com/images/I/91m7N9xNjTL._AC_UF1000,1000_QL80_.jpg'
     },
     {
         name: 'Punching Bag',
@@ -17,7 +17,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Title Boxing',
         type: 'Punching Bag',
-        image: 'https://example.com/title-boxing-punching-bag.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSr_bgAK7TMVsE-wdxL8aPr487JQJjHDSlxHA&s'
     },
     {
         name: 'Boxing Headgear',
@@ -26,16 +26,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Cleto Reyes',
         type: 'Headgear',
-        image: 'https://example.com/cleto-reyes-boxing-headgear.jpg'
-    },
-    {
-        name: 'Boxing Shoes',
-        description: 'Lightweight and durable boxing shoes for agility.',
-        price: 7999,
-        category: 'boxing',
-        brand: 'Ringside',
-        type: 'Boxing Shoes',
-        image: 'https://example.com/ringside-boxing-shoes.jpg'
+        image: 'https://cletoreyesboxing.com/wp-content/uploads/2022/01/E380N-600px.png'
     },
     {
         name: 'Hand Wraps',
@@ -44,7 +35,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Everlast',
         type: 'Hand Wraps',
-        image: 'https://example.com/everlast-boxing-hand-wraps.jpg'
+        image: 'https://m.media-amazon.com/images/I/71xNQDJeFUL._AC_UF1000,1000_QL80_.jpg'
     },
     {
         name: 'Skipping Rope',
@@ -53,7 +44,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Title Boxing',
         type: 'Skipping Rope',
-        image: 'https://example.com/title-boxing-skipping-rope.jpg'
+        image: 'https://www.titleboxing.com/cdn/shop/products/ajrp_1.jpg?v=1671768165'
     },
     {
         name: 'Mouthguard',
@@ -62,7 +53,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Cleto Reyes',
         type: 'Mouthguard',
-        image: 'https://example.com/cleto-reyes-boxing-mouthguard.jpg'
+        image: 'https://www.geezersboxing.co.uk/media/catalog/product/cache/20940c474ab826e8f954b8aa09694d47/c/r/cr1115-a.jpg'
     },
     {
         name: 'Groin Protector',
@@ -71,7 +62,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Ringside',
         type: 'Groin Protector',
-        image: 'https://example.com/ringside-boxing-groin-protector.jpg'
+        image: 'https://www.fightequipmentuk.com/cdn/shop/files/ringside-alpha-elite-groin-guard-ringside-boxing.jpg?v=1711687282'
     },
     {
         name: 'Training Mitts',
@@ -80,7 +71,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Grant',
         type: 'Training Mitts',
-        image: 'https://example.com/grant-boxing-training-mitts.jpg'
+        image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQheLUT9ja1BT-NSi-m0gDQoEJhYtrqcs08fQ&s'
     },
     {
         name: 'Heavy Bag Stand',
@@ -89,7 +80,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Everlast',
         type: 'Heavy Bag Stand',
-        image: 'https://example.com/everlast-boxing-heavy-bag-stand.jpg'
+        image: 'https://images-cdn.ubuy.co.in/646e4ed2bf1a6f11043287ca-three-station-heavy-duty-punching-bag.jpg'
     },
     {
         name: 'Double End Bag',
@@ -98,7 +89,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Title Boxing',
         type: 'Double End Bag',
-        image: 'https://example.com/title-boxing-double-end-bag.jpg'
+        image: 'https://www.titleboxing.com/cdn/shop/products/deb6-gd_1.jpg?v=1690396958'
     },
     {
         name: 'Speed Bag',
@@ -107,7 +98,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Cleto Reyes',
         type: 'Speed Bag',
-        image: 'https://example.com/cleto-reyes-boxing-speed-bag.jpg'
+        image: 'https://cletoreyesboxing.com/wp-content/uploads/2022/01/E575N-600px.png'
     },
     {
         name: 'Cornerman Kit',
@@ -116,7 +107,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Ringside',
         type: 'Cornerman Kit',
-        image: 'https://example.com/ringside-boxing-cornerman-kit.jpg'
+        image: 'https://cletoreyesboxing.com/wp-content/uploads/2022/01/E575N-600px.png'
     },
     {
         name: 'Punch Mitts',
@@ -125,7 +116,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Grant',
         type: 'Punch Mitts',
-        image: 'https://example.com/grant-boxing-punch-mitts.jpg'
+        image: 'https://fight2finish.com/cdn/shop/products/redsilver1grant.jpg?v=1667255523&width=1200'
     },
     {
         name: 'Boxing Kit',
@@ -134,6 +125,7 @@ export const boxingProducts = [
         category: 'boxing',
         brand: 'Everlast',
         type: 'Kit bag',
+        image:'https://images-cdn.ubuy.co.in/653eefee8397ef05dd782399-everlast-100-lb-vintage-heavy-bag-kit.jpg'
     }
 ];
 
