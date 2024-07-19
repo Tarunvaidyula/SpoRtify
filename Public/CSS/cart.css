@@ -76,6 +76,7 @@ body {
 .product-price,
 .product-offer {
   margin-bottom: 20px;
+  color: white;
 }
 .product-remove {
   position: absolute;

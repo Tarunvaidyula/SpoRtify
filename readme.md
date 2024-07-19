@@ -8,7 +8,7 @@ making it easier for users to find and purchase what they need.
 ## Installation Instructions ##
 To get started with SpoRtfiy on your local machine, follow these steps:
 * Clone this repository: git clone ## https://github.com/Tarunvaidyula/SpoRtify.git ##
-* Navigate to the project directory: cd eCom
+* Navigate to the project directory: cd SpoRtify
 * Install dependencies: npm install
 
 ## Usage
@@ -25,4 +25,4 @@ Contributions to SpoRtfiy are welcome! If you would like to contribute, please f
 ** Submit a pull request detailing the changes made and any relevant information.
 
 ## License
-SpoRtfiy is licensed under the terms of Mr. Tarun Vaidyula.
+SpoRtfiy is licensed under the terms of Tarun Vaidyula.
