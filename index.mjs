@@ -131,7 +131,7 @@ app.get('/checkout', ensureAuthenticated, (req, res) => {
 });
 
 app.get('/pay',ensureAuthenticated, async (req, res) => {
-    res.render('pay');
+    res.render('pay', {paypalClientId: process.env.PAYPAL_CLIENT_ID});
 });
 app.get('/confirmation', ensureAuthenticated, (req, res) => {
     res.render('confirmation', { message: 'Your payment was successful!' });
