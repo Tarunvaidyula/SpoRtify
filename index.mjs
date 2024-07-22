@@ -4,9 +4,7 @@ import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import passport from 'passport';
 import twilio from 'twilio';
-import path from 'path';
 import bodyparser from 'body-parser';
-import { fileURLToPath } from 'url';
 import paypal from '@paypal/checkout-server-sdk';
 import paypalClient from './paypalClient.mjs';
 import { User, Product, Cart, Order } from './models/database.mjs';
@@ -17,12 +15,12 @@ import { seedboxingProducts } from './models/boxingProducts.mjs';
 import {seedtabletennisProducts} from './models/tabletennisProducts.mjs';
 import {seedbadmintonProducts} from './models/badmintonProducts.mjs';
 import { forwardAuthenticated, ensureAuthenticated } from './config/passport.mjs';
-import cartRoutes from './cartRoutes.mjs';
-import productRoutes from './productRoutes.mjs';
+import cartRoutes from './Routes/cartRoutes.mjs';
+import productRoutes from './Routes/productRoutes.mjs';
 
 dotenv.config();
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT;
 const app = express();
 const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
@@ -42,8 +40,6 @@ app.use(cartRoutes);
 app.use(productRoutes);
 
 // View engine setup
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
