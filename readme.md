@@ -23,6 +23,3 @@ Contributions to SpoRtfiy are welcome! If you would like to contribute, please f
 * Fork the repository and create your branch from main.
 ** Make your changes and test thoroughly.
 ** Submit a pull request detailing the changes made and any relevant information.
-
-## License
-SpoRtfiy is licensed under the terms of Tarun Vaidyula.
