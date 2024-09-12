@@ -17,22 +17,16 @@ router.post('/forgot-password', async (req, res) => {
         if (!user) {
             return res.status(400).send('No user with that email');
         }
-
-        // Generate a reset token (using a library or just a random string)
+        // Generate a reset token
         const resetToken = crypto.randomBytes(32).toString('hex');
-        
-        // Set the token's expiration time (e.g., 1 hour)
+        // Set the token's expiration time for 1 hour
         const resetTokenExpire = Date.now() + 3600000;
-
         // Update user with the reset token and expiration time
         user.resetPasswordToken = resetToken;
         user.resetPasswordExpires = resetTokenExpire;
         await user.save();
-
-        // Send the reset token to the user (either by email or URL with the token)
+        // display the reset token to the user
         const resetUrl = `http://localhost:${port}/reset-password/${resetToken}`;
-        
-        // (If you're not using email, just show the URL for now)
         res.send(`Reset password at: ${resetUrl}`);
 
     } catch (error) {
