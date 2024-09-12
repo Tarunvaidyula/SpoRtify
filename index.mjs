@@ -3,7 +3,6 @@ import dotenv from 'dotenv';
 import bcrypt from 'bcryptjs';
 import session from 'express-session';
 import passport from 'passport';
-import twilio from 'twilio';
 import bodyparser from 'body-parser';
 import paypal from '@paypal/checkout-server-sdk';
 import paypalClient from './paypalClient.mjs';
@@ -17,12 +16,13 @@ import {seedbadmintonProducts} from './models/badmintonProducts.mjs';
 import { forwardAuthenticated, ensureAuthenticated } from './config/passport.mjs';
 import cartRoutes from './Routes/cartRoutes.mjs';
 import productRoutes from './Routes/productRoutes.mjs';
+import PasswordRoutes from './Routes/PasswordRoutes.mjs';
+import flash from 'connect-flash';
 
 dotenv.config();
 
 const port = process.env.PORT;
 const app = express();
-const twilioClient = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
 // Middleware
 app.use(express.json());
@@ -32,12 +32,20 @@ app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: true,
     saveUninitialized: true,
-    cookie: { maxAge: 1000 * 60 * 60 * 1 }
+    cookie: { maxAge: 1000 * 60 * 60 * 1 } 
 }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(cartRoutes);
 app.use(productRoutes);
+app.use(PasswordRoutes);
+app.use(flash());
+
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg');
+  res.locals.error_msg = req.flash('error_msg');
+  next();
+});
 
 // View engine setup
 app.set('view engine', 'ejs');
@@ -49,6 +57,7 @@ app.use((req, res, next) => {
     res.locals.user = req.user;
     next();
 });
+
 app.get('/', async (req, res) => {
     try {
         const cricketProducts = await Product.aggregate([
@@ -138,8 +147,10 @@ app.get('/products-by-brand/:brandName', async (req, res) => {
 app.get('/navproducts/:type', async (req, res) => {
     res.render('navproducts');
 });
-
-
+app.get('/forgot-password', async(req, res) => {
+    res.render('forgotpassword');
+});
+// Homepage route
 app.get('/homepage',ensureAuthenticated, async (req, res) => {
     try {
         const cricketProducts = await Product.aggregate([
@@ -185,6 +196,7 @@ app.get('/homepage',ensureAuthenticated, async (req, res) => {
     }
 });
 
+//Signup Route
 app.post('/signup', forwardAuthenticated, async (req, res) => {
     const { name, email, password, phnum } = req.body;
 
@@ -206,6 +218,7 @@ app.post('/signup', forwardAuthenticated, async (req, res) => {
     }
 });
 
+//Login Route
 app.post('/login', forwardAuthenticated, passport.authenticate('local', {
     failureRedirect: '/login',
     failureFlash: true
@@ -232,6 +245,7 @@ app.post('/login', forwardAuthenticated, passport.authenticate('local', {
     res.redirect('/homepage');
 });
 
+//Logout Route
 app.get('/logout', ensureAuthenticated, (req, res) => {
     req.logout(err => {
       if (err) {
@@ -254,6 +268,7 @@ app.get('/logout', ensureAuthenticated, (req, res) => {
     }
 });
 
+// Cart Checkout Routes
 app.get('/checkout', ensureAuthenticated, async (req, res) => {
     const userId = req.user._id;
     let cart;
@@ -346,6 +361,7 @@ app.post('/create-order', ensureAuthenticated, async (req, res) => {
     }
 });
 
+// Capture PayPal order
 app.post('/capture-order', ensureAuthenticated, async (req, res) => {
     const { orderId } = req.body;
 
@@ -360,6 +376,7 @@ app.post('/capture-order', ensureAuthenticated, async (req, res) => {
         res.status(500).send('Error capturing PayPal order');
     }
 });
+
 
 // Start server
 app.listen(port, () => {

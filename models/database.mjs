@@ -22,7 +22,9 @@ const UserSchema = new mongoose.Schema({
   password: { type: String, required: true },
   phnum: { type: String, validate: /^[0-9]{10}$/ },
   gender: { type: String, enum: ['Male', 'Female', 'Other'] },
-  cardNumber: { type: String, validate: validator.isCreditCard }
+  cardNumber: { type: String, validate: validator.isCreditCard },
+  resetPasswordToken: String,
+  resetPasswordExpires: Date,
 }, { timestamps: true });
 
 const ProductSchema = new mongoose.Schema({
