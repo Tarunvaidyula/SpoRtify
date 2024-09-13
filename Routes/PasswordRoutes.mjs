@@ -10,7 +10,6 @@ const port = process.env.PORT;
 
 router.post('/forgot-password', async (req, res) => {
     const { email } = req.body;
-
     try {
         // Find the user by email
         const user = await User.findOne({ email });
